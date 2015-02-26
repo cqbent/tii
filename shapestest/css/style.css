@@ -1,0 +1,61 @@
+body {
+    background-color: #202021;
+    margin-top: 20px;
+}
+
+.shape {
+    float: left;
+    shape-outside: polygon(0 0, 30% 100%, 0 100%);
+    width: 100px;
+    height: 100px;
+}
+
+.row {
+    margin-bottom: 2.5em;
+}
+
+h2 {
+    margin-top: 0;
+    text-transform: uppercase;
+    font-style: italic;
+    color: #c1d72e;
+    font-size: 125%;
+}
+
+p {
+    font-size: 11px;
+    color: #bfbfbf;
+    width: 600px;
+}
+
+a {
+    font-style: italic;
+    color: #bfbfbf;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+img {
+    height: 140px;
+    float: left;
+    margin-right: 1.5em;
+    -webkit-clip-path: polygon(0 140px, 181px 140px, 213px 0, 32px 0);
+    clip-path: url(../#myClip);
+    -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+}
+
+.svg-mask {
+    float: left;
+    margin-right: 1.5em;
+    -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+    shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+}
+
+.svg-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
