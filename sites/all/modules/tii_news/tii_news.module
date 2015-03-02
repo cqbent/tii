@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tii news feature.
+ */
+
+include_once 'tii_news.features.inc';
