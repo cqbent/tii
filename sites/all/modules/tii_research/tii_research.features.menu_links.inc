@@ -24,8 +24,9 @@ function tii_research_menu_default_menu_links() {
     'external' => 0,
     'has_children' => 0,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -50,
+    'customized' => 1,
+    'parent_identifier' => 'main-menu_research:node/3',
   );
   // Exported menu link: main-menu_research:node/3
   $menu_links['main-menu_research:node/3'] = array(
@@ -45,10 +46,10 @@ function tii_research_menu_default_menu_links() {
     'module' => 'menu',
     'hidden' => 0,
     'external' => 0,
-    'has_children' => 0,
+    'has_children' => 1,
     'expanded' => 0,
-    'weight' => 0,
-    'customized' => 0,
+    'weight' => -48,
+    'customized' => 1,
   );
   // Exported menu link: navigation_research:node/add/research
   $menu_links['navigation_research:node/add/research'] = array(

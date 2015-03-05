@@ -17,7 +17,12 @@
 Drupal.behaviors.my_custom_behavior = {
   attach: function(context, settings) {
 
-    // Place your code here.
+    // if image added in ckeditor then look for 
+    $('.node .field-name-body img').each(function(index, element) {
+        $(this)
+            .wrap('<div class="nbimage" style="float:'+$(this).css('float')+'"></div>')
+            .after('<div class="imgtitle">'+$(this).attr('title')+'</div><div class="imgcaption">'+$(this).attr('alt')+'</div>');
+    });
 
   }
 };

@@ -118,8 +118,20 @@
             stroke="#e5751f" transform="rotate(12)"/>
         </svg>
         
+        <svg class="svg-defs">
+            <defs>
+                <clipPath id="researchclip" clipPathUnits="objectBoundingBox">
+                    <polygon points=".15 0, 1 0, .85 1, 0 1" />
+                </clipPath>
+                <clipPath id="researchclip2">
+                    <polygon points="15 0, 350 0, 335 209, 0 209" />
+                </clipPath>
+            
+            </defs>
+        </svg>
+        
     </div>
-    
+
     <?php print render($page['footer']); ?>
 
 </div>

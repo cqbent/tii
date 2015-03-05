@@ -10,11 +10,11 @@
 function tii_news_menu_default_menu_links() {
   $menu_links = array();
 
-  // Exported menu link: main-menu_news:node/5
-  $menu_links['main-menu_news:node/5'] = array(
+  // Exported menu link: main-menu_news:news
+  $menu_links['main-menu_news:news'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'node/5',
-    'router_path' => 'node/%',
+    'link_path' => 'news',
+    'router_path' => 'news',
     'link_title' => 'News',
     'options' => array(
       'attributes' => array(),
@@ -23,7 +23,7 @@ function tii_news_menu_default_menu_links() {
         'class' => '',
         'style' => '',
       ),
-      'identifier' => 'main-menu_news:node/5',
+      'identifier' => 'main-menu_news:news',
     ),
     'module' => 'menu',
     'hidden' => 0,
@@ -31,7 +31,7 @@ function tii_news_menu_default_menu_links() {
     'has_children' => 0,
     'expanded' => 0,
     'weight' => 0,
-    'customized' => 0,
+    'customized' => 1,
   );
   // Exported menu link: navigation_news-article:node/add/news-article
   $menu_links['navigation_news-article:node/add/news-article'] = array(

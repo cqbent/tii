@@ -54,10 +54,10 @@ function tii_news_views_default_views() {
 
   /* Display: NewsArchive */
   $handler = $view->new_display('page', 'NewsArchive', 'page');
-  $handler->display->display_options['path'] = 'news-archive';
+  $handler->display->display_options['path'] = 'news/archive';
 
-  /* Display: Block */
-  $handler = $view->new_display('block', 'Block', 'block');
+  /* Display: Archive Block */
+  $handler = $view->new_display('block', 'Archive Block', 'block');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Content: Created year + month */
   $handler->display->display_options['arguments']['created_year_month']['id'] = 'created_year_month';
@@ -82,6 +82,10 @@ function tii_news_views_default_views() {
   $handler->display->display_options['menu']['weight'] = '0';
   $handler->display->display_options['menu']['context'] = 0;
   $handler->display->display_options['menu']['context_only_inline'] = 0;
+
+  /* Display: News List Block */
+  $handler = $view->new_display('block', 'News List Block', 'block_1');
+  $handler->display->display_options['block_description'] = 'News List Block';
   $export['news_archive'] = $view;
 
   return $export;

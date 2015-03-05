@@ -21,6 +21,21 @@ function tii_events_ds_field_settings_info() {
       'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
+    ),
+    'node_link' => array(
+      'weight' => '5',
+      'label' => 'hidden',
+      'format' => 'default',
+      'formatter_settings' => array(
+        'link text' => 'View event information',
+        'wrapper' => '',
+        'class' => '',
+      ),
     ),
   );
   $export['node|events|teaser'] = $ds_fieldsetting;
@@ -40,32 +55,29 @@ function tii_events_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'events';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_2col_fluid';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
+      'ds_content' => array(
         0 => 'field_event_thumbnail_image',
-      ),
-      'right' => array(
         1 => 'title',
         2 => 'field_event_subtitle',
         3 => 'field_event_speaker_host',
-        4 => 'field_event_date',
-        5 => 'field_event_location',
+        4 => 'field_event_location',
+        5 => 'node_link',
       ),
     ),
     'fields' => array(
-      'field_event_thumbnail_image' => 'left',
-      'title' => 'right',
-      'field_event_subtitle' => 'right',
-      'field_event_speaker_host' => 'right',
-      'field_event_date' => 'right',
-      'field_event_location' => 'right',
+      'field_event_thumbnail_image' => 'ds_content',
+      'title' => 'ds_content',
+      'field_event_subtitle' => 'ds_content',
+      'field_event_speaker_host' => 'ds_content',
+      'field_event_location' => 'ds_content',
+      'node_link' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'left' => 'div',
-      'right' => 'div',
+      'ds_content' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',

@@ -10,7 +10,7 @@ and open the template in the editor.
 
 body {
     background-color: $black;
-    &.subsection {
+    &.node-type-research, &.node-type-events, &.node-type-news-article {
         background-color: #fff;
     }
 }
@@ -32,7 +32,7 @@ body {
 }
 
 #header {
-    position: relative;
+    position: relative; z-index:2;
     #logo {
         margin-top:30px;
         img {
@@ -45,26 +45,28 @@ body {
         .menu {
             margin: 0; padding: 0;
             li {
-                list-style: none; float: left;
+                list-style: none; float: left; 
                 a { 
                     display: block; padding:5px 20px; position: relative;
                     color: $white;
                     @include diag-border($orange);
-                    .subsection & {
+                    .node-type-research &, .node-type-events &, .node-type-news-article & {
                         color: $gray;
                     }
                     &:hover, &.active {
                         color: $blue;
+                        
                     }
                     /*
                     background-image: url(../images/tii_line2.svg); 
                     background-repeat: no-repeat;
                     */
                 }
-                ul {
-                    background-color: #464646;
+                ul.menu {
+                    background-color: #464646; position:absolute; 
+                    display:none;
                     li {
-                        float: none;
+                        float: none; position: relative;
                         a {
                             padding: 2px 20px; background: none;
                             color: $white;
@@ -72,6 +74,11 @@ body {
                                 display: none;
                             }
                         }
+                    }
+                }
+                &:hover {
+                    ul.menu {
+                        display: block;
                     }
                 }
             }
@@ -82,10 +89,11 @@ body {
 
 #content {
     color: $white;
-    .subsection {
+    .node-type-research &, .node-type-events &, .node-type-news-article & {
         color: $black;
     }
     h1.title {
+        margin-bottom: 40px;
         margin-left:-42px;
         background-color: $orange;
         color: #fff;
@@ -98,16 +106,129 @@ body {
         transform: skewX(-12deg);
         /* -webkit-clip-path: polygon(12px 0%, 100% 0%, -webkit-calc(100% - 12px) 100%, 0% 100%); */
     }
-    h2, h3 {
+    h2, h3, .field-label {
         text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
     }
     h2 {
         color: $blue; 
-        font-size: 1.6em;  padding-left:20px;
-        @include diag-border($orange);
+        font-size: 1.6em;  
+        //@include diag-border($orange);
+        a {
+            color: $blue;
+        }
     }
-    h3 {
+    h3, .field-label {
         color: $orange; font-size:1.1em;
+    }
+    
+    .team-name {
+        margin: 0;
+    }
+    .team-title {
+        color: $blue; margin: 0;
+    }
+    .node {
+        .group-left {
+            
+        }
+    }
+    .field-type-image {
+        position: relative;
+        float: left;
+        margin-right: 1.5em;
+        -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+        -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+        shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+        image, img {
+            clip-path: url(#researchclip);
+        }
+    }
+    .field-name-body {
+        .nbimage {
+            padding-bottom: 10px; border-bottom: 1px $lightblue solid; 
+            margin-bottom: 20px;
+            img { width: 100%; }
+            .imgtitle {
+                color: $lightblue; text-transform: uppercase;
+                font-family: 'DINWeb-MediumItalic';
+            }
+        }
+    }
+    // events, research, news
+    .node-events, .node-research, .node-news-article {
+        .field-name-field-event-subtitle, .field-name-field-news-subtitle {
+            color: $blue; text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; 
+            margin-bottom: 20px; font-size:1.6em;
+        }
+        .field-name-field-event-speaker-host {
+            margin-bottom: 20px;
+            h3, p { margin: 0; }
+        }
+        .field-name-field-event-location {
+            h3, p { margin: 0; }
+            h3 { color: $blue; }
+            margin-bottom: 20px;
+        }
+        .field-name-field-event-sponsors {
+            p { margin: 0; }
+        }
+        .field-name-post-date {
+            color: $orange;
+        }
+    }
+    .view-research-summaries, .view-events, .view-news-archive {
+        h2 { 
+            margin: 0; 
+        }
+        h3 { margin-bottom: 0; color: $white; }
+        p { margin: 0; }
+        .field-name-node-link {
+            a {
+                font-family: 'DINWeb-MediumItalic'; 
+                color: $white;
+                &:before {
+                    content: "\f0a9"; font-family: 'FontAwesome'; color: $blue;
+                    padding-right:10px;
+                }
+            }
+        }
+        .field-name-field-event-subtitle {
+            color: $orange; font-size:1.1em;
+        }
+        .field-name-post-date {
+            color: $orange;
+        }
+    }
+    // research
+    .node-research {
+        .field-label {
+            font-size: 1.6em; color: $blue;
+        }
+    }
+    .view-research-summaries {
+        h2 { color: $green; }
+    }
+    
+}
+.region-sidebar-second {
+    margin-top:100px;
+    h2.block-title {
+        color: $blue; 
+        font-size: 1.25em; 
+        text-transform: uppercase;
+        font-family: 'DINWeb-MediumItalic'; 
+        a {
+            color: $blue;
+        }
+    }
+    ul {
+        margin: 0; padding: 0;
+        li {
+            list-style: none;
+        }
+    }
+    a {
+        color: $white;
     }
 }
 

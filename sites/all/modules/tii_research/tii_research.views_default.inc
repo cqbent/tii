@@ -89,7 +89,16 @@ function tii_research_views_default_views() {
   $handler->display->display_options['filters']['field_research_type_tid']['table'] = 'field_data_field_research_type';
   $handler->display->display_options['filters']['field_research_type_tid']['field'] = 'field_research_type_tid';
   $handler->display->display_options['filters']['field_research_type_tid']['value'] = array(
-    0 => '1',
+    0 => '2',
+  );
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['operator_id'] = 'field_research_type_tid_op';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['label'] = 'Research type (field_research_type)';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['operator'] = 'field_research_type_tid_op';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['identifier'] = 'field_research_type_tid';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
   );
   $handler->display->display_options['filters']['field_research_type_tid']['vocabulary'] = 'research';
   $handler->display->display_options['path'] = 'research/seed-funding-program';
@@ -123,7 +132,16 @@ function tii_research_views_default_views() {
   $handler->display->display_options['filters']['field_research_type_tid']['table'] = 'field_data_field_research_type';
   $handler->display->display_options['filters']['field_research_type_tid']['field'] = 'field_research_type_tid';
   $handler->display->display_options['filters']['field_research_type_tid']['value'] = array(
-    0 => '2',
+    0 => '1',
+  );
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['operator_id'] = 'field_research_type_tid_op';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['label'] = 'Research type (field_research_type)';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['operator'] = 'field_research_type_tid_op';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['identifier'] = 'field_research_type_tid';
+  $handler->display->display_options['filters']['field_research_type_tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
   );
   $handler->display->display_options['filters']['field_research_type_tid']['vocabulary'] = 'research';
   $handler->display->display_options['path'] = 'research/faculty-research';

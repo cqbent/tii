@@ -65,9 +65,8 @@ function tii_preprocess_html(&$variables, $hook) {
  * @param $hook
  *   The name of the template being rendered ("page" in this case.)
  */
-/* -- Delete this line if you want to use this function
 function tii_preprocess_page(&$variables, $hook) {
-  $variables['sample_variable'] = t('Lorem ipsum.');
+    drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 'external');  
 }
 // */
 
@@ -142,4 +141,32 @@ function tii_preprocess_block(&$variables, $hook) {
   //  $variables['theme_hook_suggestions'] = array_diff($variables['theme_hook_suggestions'], array('block__no_wrapper'));
   //}
 }
+ * 
 // */
+
+function tii_preprocess_field(&$vars) {
+    // if is field image then add svg wrapper; alter
+    //dsm($vars);
+    
+}
+
+function tii_image($variables) {
+  //dsm($variables);
+  $attributes = $variables['attributes'];
+  $attributes['src'] = file_create_url($variables['path']);
+
+  foreach (array('width', 'height', 'alt', 'title') as $key) {
+    if (isset($variables[$key])) {
+      $attributes[$key] = $variables[$key];
+    }
+  }
+
+  //return '<img' . drupal_attributes($attributes) . ' />';
+  $img = '<svg width="'.$attributes['width'].'" height="'.$attributes['height'].'">
+          <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'.$attributes['src'].'" width="'.$attributes['width'].'" height="'.$attributes['height'].'"></image>
+          </svg>';
+  
+  return $img;
+}
+
+

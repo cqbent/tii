@@ -22,6 +22,11 @@ function tii_research_ds_field_settings_info() {
       'label' => 'hidden',
       'format' => 'default',
     ),
+    'node_link' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
   );
   $export['node|research|teaser'] = $ds_fieldsetting;
 
@@ -40,26 +45,25 @@ function tii_research_ds_layout_settings_info() {
   $ds_layout->entity_type = 'node';
   $ds_layout->bundle = 'research';
   $ds_layout->view_mode = 'teaser';
-  $ds_layout->layout = 'ds_2col_fluid';
+  $ds_layout->layout = 'ds_1col';
   $ds_layout->settings = array(
     'regions' => array(
-      'left' => array(
+      'ds_content' => array(
         0 => 'field_research_image',
-      ),
-      'right' => array(
         1 => 'title',
         2 => 'body',
+        3 => 'node_link',
       ),
     ),
     'fields' => array(
-      'field_research_image' => 'left',
-      'title' => 'right',
-      'body' => 'right',
+      'field_research_image' => 'ds_content',
+      'title' => 'ds_content',
+      'body' => 'ds_content',
+      'node_link' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(
-      'left' => 'div',
-      'right' => 'div',
+      'ds_content' => 'div',
     ),
     'layout_wrapper' => 'div',
     'layout_attributes' => '',
