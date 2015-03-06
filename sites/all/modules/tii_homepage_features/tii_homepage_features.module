@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tii homepage features feature.
+ */
+
+include_once 'tii_homepage_features.features.inc';

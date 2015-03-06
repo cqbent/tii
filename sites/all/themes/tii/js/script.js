@@ -23,9 +23,42 @@ Drupal.behaviors.my_custom_behavior = {
             .wrap('<div class="nbimage" style="float:'+$(this).css('float')+'"></div>')
             .after('<div class="imgtitle">'+$(this).attr('title')+'</div><div class="imgcaption">'+$(this).attr('alt')+'</div>');
     });
+    
+    $(document).ready(function() {
+        if (typeof zAccordian == 'function') {
+            
+        }
+        
+        
+        /*
+         * for each slanted image:
+         *  get image height
+         *  get slant width based on tangent(deg) * image height
+         *  set margin to -slant width
+         *  set image width to 2 * slant width
+         */
+        /*
+        $('.field-type-image').each(function() {
+            var ih = $(this).height();
+            var img = $(this).find('img');
+            var slant = ih * -(getTanDeg(15));
+            var w_extra = slant * 2;
+            //$(this).find('img').css('margin-left',slant);
+            //$(this).find('img').css('width','calc(100% + '+w_extra+')');
+            //alert(getTanDeg(15));
+        });
+        */
+    });
+    
+    
+
 
   }
 };
 
+function getTanDeg(deg) {
+    var rad = deg * Math.PI/180;
+    return Math.tan(rad);
+}
 
 })(jQuery, Drupal, this, this.document);

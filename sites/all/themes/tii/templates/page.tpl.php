@@ -120,15 +120,44 @@
         
         <svg class="svg-defs">
             <defs>
-                <clipPath id="researchclip" clipPathUnits="objectBoundingBox">
+                <clipPath id="imageclip" clipPathUnits="objectBoundingBox">
                     <polygon points=".15 0, 1 0, .85 1, 0 1" />
                 </clipPath>
-                <clipPath id="researchclip2">
-                    <polygon points="15 0, 350 0, 335 209, 0 209" />
+                <clipPath id="sliderclip">
+                    <polygon points="75 0, 755 0, 680 298, 0 298" />
+                </clipPath>
+                <clipPath id="sliceclip">
+                    <polygon points="75 0, 125 0, 75 298, 0 298" />
                 </clipPath>
             
             </defs>
         </svg>
+        
+        <style>
+            .field-type-image, .views-field-field-image, .views-field-field-slice-image {
+                -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            }
+            
+            .field-type-image image {
+                clip-path: url(#imageclip);
+            }
+            /*
+            .views-field-field-image image {
+                clip-path: url(#sliderclip);
+            }
+            .views-field-field-slice-image image {
+                clip-path: url(#sliceclip);
+            }
+            .views-field-field-image {
+                -webkit-shape-inside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                -moz-shape-inside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                shape-inside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+
+            }
+            */
+        </style>
         
     </div>
 
@@ -137,3 +166,30 @@
 </div>
 
 <?php print render($page['bottom']); ?>
+
+<?php
+if ($is_front) {
+    ?>
+    <script>
+    jQuery(document).ready(function($) {
+        $(".slider-list").zAccordion({
+            tabWidth: 50,
+            speed: 650,
+            auto: false,
+            slideClass: 'slider',
+            animationStart: function () {
+                $('.slider-list').find('li.slider-open .views-field-field-slice-image').css('display', 'none');
+                $('.slider-list').find('li.slider-open .views-field-title, li.slider-open .views-field-field-image').css('display','block');
+            },
+            animationComplete: function () {
+                $('.slider-list').find('li.slider-closed .views-field-title, li.slider-closed .views-field-field-image').fadeOut();
+                $('.slider-list').find('li.slider-closed .views-field-field-slice-image').fadeIn();
+            },
+            width: 950,
+            height: 325
+        });
+    });
+    </script>
+    <?php
+}
+?>

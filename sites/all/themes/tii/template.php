@@ -66,7 +66,10 @@ function tii_preprocess_html(&$variables, $hook) {
  *   The name of the template being rendered ("page" in this case.)
  */
 function tii_preprocess_page(&$variables, $hook) {
-    drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 'external');  
+    drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 'external');
+    if (drupal_is_front_page()) {
+        drupal_add_js(drupal_get_path('theme', 'tii') .'/js/jquery.zaccordion.js', 'file');
+    }
 }
 // */
 
@@ -147,8 +150,9 @@ function tii_preprocess_block(&$variables, $hook) {
 function tii_preprocess_field(&$vars) {
     // if is field image then add svg wrapper; alter
     //dsm($vars);
-    
 }
+
+
 
 function tii_image($variables) {
   //dsm($variables);
@@ -160,13 +164,16 @@ function tii_image($variables) {
       $attributes[$key] = $variables[$key];
     }
   }
-
-  //return '<img' . drupal_attributes($attributes) . ' />';
-  $img = '<svg width="'.$attributes['width'].'" height="'.$attributes['height'].'">
+  if (isset($variables['style_name']) && (strstr($variables['style_name'],'tii_'))) {
+      $img = '<svg width="'.$attributes['width'].'" height="'.$attributes['height'].'">
           <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'.$attributes['src'].'" width="'.$attributes['width'].'" height="'.$attributes['height'].'"></image>
           </svg>';
-  
+  }
+  else {
+      $img = '<img' . drupal_attributes($attributes) . ' />';
+  }
   return $img;
 }
+
 
 
