@@ -108,19 +108,26 @@ body {
     }
     h2, h3, .field-label {
         text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
+        font-weight: normal;
     }
     h2 {
         color: $blue; 
-        font-size: 1.6em;  
-        //@include diag-border($orange);
+        font-size: 1.6em; line-height: 1.25em;
+        @include diag-border($orange);
         a {
             color: $blue;
+        }
+        &.orange {
+            color: $orange;
+            @include diag-border($blue);
         }
     }
     h3, .field-label {
         color: $orange; font-size:1.1em;
     }
-    
+    p {
+        margin-top: 0;
+    }
     .team-name {
         margin: 0;
     }
@@ -161,6 +168,44 @@ body {
             }
         }
     }
+    // team page multi column layout
+    .team-list {
+        padding: 0; margin: 0; list-style:none;
+        li {
+            margin: 0; padding: 0;
+            img {
+                display: block; float: left; margin-right: 20px;
+                -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            }
+            .team-title { margin-bottom: 5px; }
+        }
+    }
+    .steering-committee-list {
+        /* column-count: 3; -webkit-column-count: 3; -moz-column-count: 3; */
+        margin: 0; padding: 0; list-style: none;
+        li {
+            margin: 0 0 0px 0; padding:0;
+            width: 80%; 
+            .team-name {
+                color: $blue; font-family: 'DINWeb-Medium';
+                border-bottom: 1px $gray solid; padding: 0 0 5px 0;
+                margin-bottom: 5px; cursor: pointer;
+            }
+            .team-title {
+                color: $orange; font-size: 1em;
+            }
+            p { font-size: .875em; display: none; }
+            &.active {
+                p {
+                    display: block;
+                }
+            }
+        }
+    }
+    
+    
     // home page styles
     // accordian slider
     .accordian-list {
@@ -285,6 +330,18 @@ body {
     }
     .view-research-summaries {
         h2 { color: $green; }
+    }
+    
+    @include breakpoint(minsmall) {
+        // grid column layout
+        .grid-columns {
+            &.cols-2 {
+                @include responsive-grid(2);
+            }
+            &.cols-3 {
+                @include responsive-grid(3);
+            }
+        }
     }
     
 }

@@ -38,10 +38,45 @@
 
 @mixin diag-border($color) {
     &:before {
-        content: " "; border-left:2px #{$color} solid;
+        content: "\00A0"; border-left:2px #{$color} solid;
         -webkit-transform: skewX(-12deg); 
         transform: skew(-12deg);
-        position: absolute; display: block; height:100%;
-        top: 0; left: 0;
+        display: inline-block; height:100%;
+        padding-right:5px;
+    }
+}
+
+@mixin breakpoint($point) {
+    @if $point == maxsmall {
+        @media (max-width: 779px) { @content; }
+    }
+    @if $point == minsmall {
+        @media (min-width: 780px) { @content; }
+    }
+    @if $point == smallmed {
+        @media (min-width: 780px) and (max-width: 1159px) { @content; }
+    }
+    @if $point == minlarge {
+        @media (min-width: 1160px) { @content; }
+    }
+}
+
+@mixin clearafter {
+    &:after {
+        content: ""; display: block;
+        clear: both;
+    }
+}
+
+@mixin responsive-grid($columns) {
+    $i: 1;
+    $zen-column-count: $columns; 
+    @include clearafter();
+    .column-1 {
+        clear: both;
+    }
+    @while $i <= $columns {
+        .column-#{$i} { @include zen-grid-item(1, $i); }
+        $i: $i+1;
     }
 }

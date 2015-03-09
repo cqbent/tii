@@ -17,18 +17,44 @@
 Drupal.behaviors.my_custom_behavior = {
   attach: function(context, settings) {
 
-    // if image added in ckeditor then look for 
-    $('.node .field-name-body img').each(function(index, element) {
-        $(this)
-            .wrap('<div class="nbimage" style="float:'+$(this).css('float')+'"></div>')
-            .after('<div class="imgtitle">'+$(this).attr('title')+'</div><div class="imgcaption">'+$(this).attr('alt')+'</div>');
-    });
     
     $(document).ready(function() {
         if (typeof zAccordian == 'function') {
-            
+            $(".slider-list").zAccordion({
+                tabWidth: 50,
+                speed: 650,
+                slideClass: 'slider',
+                animationStart: function () {
+                    //$('.slider-list').find('li.slider-open div').css('display', 'none');
+                    //$('.slider-list').find('li.slider-previous div').css('display', 'none');
+                },
+                animationComplete: function () {
+                    //$('.slider-list').find('li div').fadeIn(600);
+                },
+                width: 905,
+                height: 298
+            });
         }
+        // if title in ckeditor image then create caption format
+        $('.node .field-name-body img').each(function(index, element) {
+            if ($(this).attr('title')) {
+                $(this)
+                    .wrap('<div class="nbimage" style="float:'+$(this).css('float')+'"></div>')
+                    .after('<div class="imgtitle">'+$(this).attr('title')+'</div><div class="imgcaption">'+$(this).attr('alt')+'</div>');
+            }
+            else {
+                //$(this).wrap('<div class="image></div>');
+            }
+        });
         
+        $('.steering-committee-list li').click(function() {
+            if ($(this).hasClass('active')) {
+                $(this).removeClass('active');
+            }
+            else {
+                $(this).addClass('active');
+            }
+        });
         
         /*
          * for each slanted image:
