@@ -50,12 +50,14 @@ body {
                     display: block; padding:5px 20px; position: relative;
                     color: $white;
                     @include diag-border($orange);
+                    &:before {
+                        margin-left:-20px; padding-right: 15px;
+                    }
                     .node-type-research &, .node-type-events &, .node-type-news-article & {
                         color: $gray;
                     }
                     &:hover, &.active {
                         color: $blue;
-                        
                     }
                     /*
                     background-image: url(../images/tii_line2.svg); 
@@ -69,7 +71,7 @@ body {
                         float: none; position: relative;
                         a {
                             padding: 2px 20px; background: none;
-                            color: $white;
+                            
                             &:before {
                                 display: none;
                             }
@@ -137,6 +139,11 @@ body {
     .node {
         .group-left {
             
+        }
+    }
+    .field-name-title {
+        h2 {
+            &:before { display: none; }
         }
     }
     .field-type-image {
