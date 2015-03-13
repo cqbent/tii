@@ -185,6 +185,9 @@ body {
     p {
         margin-top: 0; margin-bottom: .5em;
     }
+    a {
+        color: $white;
+    }
     .team-name {
         margin: 0; font-family: 'DINWeb-Medium';
     }
@@ -288,13 +291,13 @@ body {
     .accordian-list {
         .slider-list {
             margin: 0 80px 10px 0; 
-            transform: skewX(-13deg); -webkit-transform: skewX(-13deg);
+            transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
             max-width:100%;
             float: right; 
             .slider {
                 border-left:13px $black solid;
                 .views-field-field-image {
-                    position: absolute; transform: skewX(13deg); -webkit-transform: skewX(13deg);
+                    position: absolute; transform: skewX(12deg); -webkit-transform: skewX(12deg);
                     margin-left:-35px;
                     width: calc(100% + 80px);
                     image, img { 
@@ -302,9 +305,10 @@ body {
                     }
                 }
                 .views-field-title {
+                    transform: skewX(12deg); -webkit-transform: skewX(12deg);
                     position: absolute; bottom: 0; 
                     padding: 20px; width: 100%; box-sizing: border-box;
-                    color: $white; font-family: 'DINWeb-Medium';
+                    color: $white; font-family: 'DINWeb-Italic';
                     text-transform: uppercase;
                     a { color: $white; }
                     background: rgba(1,174,211,.5);
@@ -327,6 +331,7 @@ body {
                         content: "\f0a9"; font-family: 'FontAwesome'; 
                         display: block; position: absolute; bottom: 20px;
                         left: 10px;
+                        transform: skewX(12deg); -webkit-transform: skewX(12deg);
                     }
                 }
                 &.slider-open, &.views-row-first {
@@ -337,13 +342,15 @@ body {
         }
     }
     .homepage-news-block {
-        max-width: 950px; transform: skewX(-13deg); clear:both;
+        max-width: 950px; clear:both; transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
         float: right; margin: 20px 130px 0 0;
         .views-row {
-            position: relative; margin-bottom: 20px;
+            position: relative; margin-bottom: 20px; 
+            
             .views-field-title {
+                transform: skewX(12deg); -webkit-transform: skewX(12deg);
                 position: absolute; top: 20px; left: 40px;
-                color: $white; font-family: 'DINWeb-Medium';
+                color: $white; font-family: 'DINWeb-Italic';
                 text-transform: uppercase;
                 z-index: 2;
                 a { color: $white; }
