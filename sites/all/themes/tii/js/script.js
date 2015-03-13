@@ -19,7 +19,9 @@ Drupal.behaviors.my_custom_behavior = {
 
     
     $(document).ready(function() {
+        console.log('this');
         if (typeof zAccordian == 'function') {
+            
             $(".slider-list").zAccordion({
                 tabWidth: 50,
                 speed: 650,
@@ -34,6 +36,7 @@ Drupal.behaviors.my_custom_behavior = {
                 width: 905,
                 height: 298
             });
+            
         }
         // if title in ckeditor image then create caption format
         $('.node .field-name-body img').each(function(index, element) {

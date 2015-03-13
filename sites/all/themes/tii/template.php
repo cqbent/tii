@@ -164,14 +164,17 @@ function tii_image($variables) {
       $attributes[$key] = $variables[$key];
     }
   }
+  /*
   if (isset($variables['style_name']) && (strstr($variables['style_name'],'tii_'))) {
       $img = '<svg width="'.$attributes['width'].'" height="'.$attributes['height'].'">
           <image xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="'.$attributes['src'].'" width="'.$attributes['width'].'" height="'.$attributes['height'].'"></image>
           </svg>';
   }
   else {
+   * 
+   */
       $img = '<img' . drupal_attributes($attributes) . ' />';
-  }
+  //}
   return $img;
 }
 

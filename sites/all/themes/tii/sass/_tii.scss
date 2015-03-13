@@ -34,7 +34,7 @@ body {
 #header {
     position: relative; z-index:2;
     #logo {
-        margin-top:30px;
+        margin-top:75px; margin-left:-10px;
         img {
             width:310px;
         }
@@ -49,8 +49,9 @@ body {
                 a { 
                     display: block; padding:5px 20px; position: relative;
                     color: $white;
-                    @include diag-border($orange);
+                    
                     &:before {
+                        @include diag-border($orange);
                         margin-left:-20px; padding-right: 15px;
                     }
                     .node-type-research &, .node-type-events &, .node-type-news-article & {
@@ -64,6 +65,15 @@ body {
                     background-repeat: no-repeat;
                     */
                 }
+                &.last {
+                    a {
+                        &:after {
+                            @include diag-border($orange);
+                            margin-left: 20px;
+                        }
+                        
+                    }
+                }
                 ul.menu {
                     background-color: #464646; position:absolute; 
                     display:none;
@@ -71,9 +81,14 @@ body {
                         float: none; position: relative;
                         a {
                             padding: 2px 20px; background: none;
-                            
                             &:before {
                                 display: none;
+                            }
+                        }
+                        &.last a:after { display: none; margin: 0; }
+                        .node-type-research &, .node-type-events &, .node-type-news-article & {
+                            a {
+                                color: $white;
                             }
                         }
                     }
@@ -89,49 +104,89 @@ body {
     }
 }
 
+// image styles
+.field-type-image {
+    position: relative;
+    float: left;
+    margin-right: 1.5em;
+    margin-right: 3em;
+    transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
+    overflow: hidden;
+    img {
+        transform: skewX(12deg); -webkit-transform: skewX(12deg);
+        display: block;
+        max-width: inherit;
+    }
+    .view-events &, .view-past-events &, .view-news-archive & {
+        width: 175px; height: 210px;
+        -webkit-shape-outside: polygon(18% 0, 100% 0, 82% 100%, 0 100%);
+        -moz-shape-outside: polygon(18% 0, 100% 0, 82% 100%, 0 100%);
+        shape-outside: polygon(18% 0, 100% 0, 82% 100%, 0 100%);
+        img {
+            margin-left:-22px; width:calc(100% + 44px);
+        }
+    }
+    .view-research-summaries & {
+        width: 300px; height: 205px;
+        -webkit-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
+        -moz-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
+        shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
+        img {
+            margin-left:-22px; width:calc(100% + 44px);
+        }
+    }
+}
+
+
 #content {
     color: $white;
     .node-type-research &, .node-type-events &, .node-type-news-article & {
         color: $black;
     }
     h1.title {
-        margin-bottom: 40px;
-        margin-left:-42px;
+        margin-left:-52px;
         background-color: $orange;
         color: #fff;
         font-family: 'DINWeb-Medium'; font-weight: normal;
-        padding:5px 20px;
+        padding:5px 20px 2px 20px;
         display: inline-block; text-transform: uppercase;
         -webkit-transform: skew(-12deg);
         -moz-transform: skewX(-12deg);
         -o-transform: skewX(-12deg);
         transform: skewX(-12deg);
+        margin-bottom: 55px;
         /* -webkit-clip-path: polygon(12px 0%, 100% 0%, -webkit-calc(100% - 12px) 100%, 0% 100%); */
     }
     h2, h3, .field-label {
         text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
-        font-weight: normal;
+        font-weight: normal; margin-top:0;
     }
     h2 {
-        color: $blue; 
+        color: $blue; margin-left:-15px;
         font-size: 1.6em; line-height: 1.25em;
-        @include diag-border($orange);
+        &:before {
+            @include diag-border($orange);
+        }
+        
         a {
             color: $blue;
         }
         &.orange {
             color: $orange;
-            @include diag-border($blue);
+            &:before {
+                @include diag-border($blue);
+            }
+            
         }
     }
     h3, .field-label {
         color: $orange; font-size:1.1em;
     }
     p {
-        margin-top: 0;
+        margin-top: 0; margin-bottom: .5em;
     }
     .team-name {
-        margin: 0;
+        margin: 0; font-family: 'DINWeb-Medium';
     }
     .team-title {
         color: $blue; margin: 0;
@@ -146,24 +201,7 @@ body {
             &:before { display: none; }
         }
     }
-    .field-type-image {
-        position: relative;
-        float: left;
-        margin-right: 1.5em;
-        /*
-        margin-right: 3em;
-        transform: skewX(-15deg);
-        overflow: hidden;
-        width: 350px; height: 209px;
-        */
-        img {
-            transform: skewX(15deg);
-            display: block;
-            max-width: inherit;
-            margin-left: -30px; 
-            width: calc(100% + 65px);
-        }
-    }
+    
     .field-name-body {
         .nbimage {
             padding-bottom: 10px; border-bottom: 1px $lightblue solid; 
@@ -175,6 +213,10 @@ body {
             }
         }
     }
+    
+    
+    
+    
     // team page multi column layout
     .team-list {
         padding: 0; margin: 0; list-style:none;
@@ -187,13 +229,16 @@ body {
                 shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
             }
             .team-title { margin-bottom: 5px; }
+            &:first-child {
+                
+            }
         }
     }
     .steering-committee-list {
         /* column-count: 3; -webkit-column-count: 3; -moz-column-count: 3; */
         margin: 0; padding: 0; list-style: none;
         li {
-            margin: 0 0 0px 0; padding:0;
+            margin: 0 0 0px 0; padding:5px 0 0 0;
             width: 80%; 
             .team-name {
                 color: $blue; font-family: 'DINWeb-Medium';
@@ -211,18 +256,45 @@ body {
             }
         }
     }
+    .node-type-research &, .node-type-events &, .node-type-news-article & {
+        a {
+            color: $blue;
+        }
+    }
     
-    
+    .front & {
+        h1.title { display: none; }
+    }
     // home page styles
     // accordian slider
+    .accordian-slider {
+        margin: 0;
+        .slider-nav {
+            clear: both; padding: 0; list-style: none;
+            float: right; margin: 0 110px 0 0;
+            li {
+                margin: 0; padding: 0; cursor: pointer; float: left;
+                color: $gray;
+                span { visibility: hidden; }
+                &:before {
+                    content: "\2022"; font-size:2em;
+                }
+                &.active {
+                    color: $white;
+                }
+            }
+        }
+    }
     .accordian-list {
         .slider-list {
-            transform: skewX(-15deg);
+            margin: 0 80px 10px 0; 
+            transform: skewX(-13deg); -webkit-transform: skewX(-13deg);
             max-width:100%;
-            float: right; margin-right: 80px;
+            float: right; 
             .slider {
+                border-left:13px $black solid;
                 .views-field-field-image {
-                    position: absolute; transform: skewX(15deg);
+                    position: absolute; transform: skewX(13deg); -webkit-transform: skewX(13deg);
                     margin-left:-35px;
                     width: calc(100% + 80px);
                     image, img { 
@@ -251,6 +323,11 @@ body {
                     .views-field-title {
                         display: none;
                     }
+                    &:before {
+                        content: "\f0a9"; font-family: 'FontAwesome'; 
+                        display: block; position: absolute; bottom: 20px;
+                        left: 10px;
+                    }
                 }
                 &.slider-open, &.views-row-first {
                     .views-field-field-slice-image { display: none; }
@@ -260,8 +337,8 @@ body {
         }
     }
     .homepage-news-block {
-        max-width: 950px; transform: skewX(-15deg); clear:both;
-        float: right; margin-right: 170px;
+        max-width: 950px; transform: skewX(-13deg); clear:both;
+        float: right; margin: 20px 130px 0 0;
         .views-row {
             position: relative; margin-bottom: 20px;
             .views-field-title {
@@ -288,7 +365,7 @@ body {
     .node-events, .node-research, .node-news-article {
         .field-name-field-event-subtitle, .field-name-field-news-subtitle {
             color: $blue; text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; 
-            margin-bottom: 20px; font-size:1.6em;
+            margin-bottom: 1em; font-size:1.6em;
         }
         .field-name-field-event-speaker-host {
             margin-bottom: 20px;
@@ -297,21 +374,31 @@ body {
         .field-name-field-event-location {
             h3, p { margin: 0; }
             h3 { color: $blue; }
-            margin-bottom: 20px;
+            margin-bottom: .5em;
         }
         .field-name-field-event-sponsors {
             p { margin: 0; }
         }
         .field-name-post-date {
-            color: $orange;
+            color: $orange; font-family: 'DINWeb-MediumItalic';  margin-bottom: 1em;
+        }
+        .field-name-node-link {
+            text-transform: capitalize;
+        }
+        .field-type-image {
+            
         }
     }
-    .view-research-summaries, .view-events, .view-news-archive {
+    .view-research-summaries, .view-events, .view-past-events, .view-news-archive {
+        
         h2 { 
             margin: 0; 
         }
         h3 { margin-bottom: 0; color: $white; }
         p { margin: 0; }
+        .views-row {
+            margin-bottom: 50px;
+        }
         .field-name-node-link {
             a {
                 font-family: 'DINWeb-MediumItalic'; 
@@ -328,15 +415,21 @@ body {
         .field-name-post-date {
             color: $orange;
         }
+        .field-name-body {
+            margin-bottom: 10px;
+        }
     }
     // research
     .node-research {
         .field-label {
-            font-size: 1.6em; color: $blue;
+            font-size: 1.6em; color: $blue; margin-bottom: .5em;
         }
     }
     .view-research-summaries {
-        h2 { color: $green; }
+        h2 { 
+            color: $green; margin-bottom: .5em; 
+            a { color: $green; }
+        }
     }
     
     @include breakpoint(minsmall) {
@@ -372,12 +465,32 @@ body {
     a {
         color: $white;
     }
+    .news-archive, .past-events {
+        background-color: #000;
+        padding: 20px;
+    }
+    
+    .node-type-research &, .node-type-events &, .node-type-news-article & {
+        .news-archive, .past-events {
+            background: none;
+            a {
+                color: $gray;
+            }
+        }
+    }
 }
 
 #footer {
-    background-color: #000; padding: 30px; width:100%; 
+    background-color: #000; padding: 20px 0 20px 0; width:100%; 
+    height: 110px; box-shadow: border-box;
     .inner {
-        max-width: 1400px; margin: 0 auto; position: relative;
+        max-width: 1160px; margin: 0 auto; position: relative;
+        .block, p {
+            margin: 0;
+        }
+    }
+    a {
+        color: $white;
     }
     .footer-info-block {
         float: right; color: $white; font-size: .8em;
@@ -386,6 +499,9 @@ body {
             float: left; margin-left: 30px;
         }
         p { margin: 0; }
+    }
+    .tufts-logo {
+        float: left;
     }
 }
 

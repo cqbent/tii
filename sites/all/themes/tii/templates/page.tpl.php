@@ -121,7 +121,7 @@
         <svg class="svg-defs">
             <defs>
                 <clipPath id="imageclip" clipPathUnits="objectBoundingBox">
-                    <polygon points=".15 0, 1 0, .85 1, 0 1" />
+                    <polygon points=".13 0, 1 0, .87 1, 0 1" />
                 </clipPath>
                 <clipPath id="sliderclip">
                     <polygon points="75 0, 755 0, 680 298, 0 298" />
@@ -129,15 +129,20 @@
                 <clipPath id="sliceclip">
                     <polygon points="75 0, 125 0, 75 298, 0 298" />
                 </clipPath>
-            
+                <clipPath id="clipPath">
+                    <rect x="50" y="0" width="200" height="190" transform="skewX(-13)" />
+                </clipPath>
+                <clipPath id="imageclip-alt" clipPathUnits="objectBoundingBox">
+                    <polygon points=".20 0, 1 0, .80 1, 0 1" />
+                </clipPath>
             </defs>
         </svg>
         
         <style>
             .field-type-image, .views-field-field-image, .views-field-field-slice-image {
-                -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-                -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-                shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                -webkit-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
+                -moz-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
+                shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
             }
             
             .field-type-image image {
@@ -185,9 +190,30 @@ if ($is_front) {
                 $('.slider-list').find('li.slider-closed .views-field-title, li.slider-closed .views-field-field-image').fadeOut();
                 $('.slider-list').find('li.slider-closed .views-field-field-slice-image').fadeIn();
             },
+            buildComplete: function() {
+                createSliderNav();
+            },
             width: 950,
             height: 325
         });
+        function createSliderNav() {
+            // build nav controls
+            var s_count = $('.slider-list li').length;
+            var s_controls = ''; var active_init = ''
+            for (c = 0; c < s_count; c++) {
+                if (c == 0) { active_init = ' class="active"'; }
+                else { active_init = ''; }
+                s_controls += '<li'+active_init+'><span>'+c+'</span></li>';
+            }
+            $('.accordian-slider').append('<ul class="slider-nav">'+s_controls+'</ul>');
+            $(".slider-nav li").click(function() {
+                $(".slider-nav li").removeClass("active");
+                $(".slider-list").zAccordion("trigger", $(this).index());
+                $(this).addClass('active');
+                //return false;
+            });
+        }
+        
     });
     </script>
     <?php
