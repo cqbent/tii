@@ -1,0 +1,15 @@
+name = tii share
+description = share display
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = tii_share
+dependencies[] = context
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = sharethis
+dependencies[] = tii_events
+dependencies[] = tii_news
+features[context][] = sharethis_display
+features[ctools][] = context:context:3
+features[features_api][] = api:2

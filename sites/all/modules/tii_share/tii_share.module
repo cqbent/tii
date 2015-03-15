@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the tii share feature.
+ */
+
+include_once 'tii_share.features.inc';
