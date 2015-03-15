@@ -99,6 +99,16 @@ Drupal.behaviors.my_custom_behavior = {
             }
         });
         
+         /* mobile menu - add action */
+        $('.block-menu-block').click(function() {
+            if ($('.block-menu-block').hasClass('menu-active')) {
+                $('.block-menu-block').removeClass('menu-active');
+            }
+            else {
+                $('.block-menu-block').addClass('menu-active');
+            }
+        });
+        
         /*
          * for each slanted image:
          *  get image height

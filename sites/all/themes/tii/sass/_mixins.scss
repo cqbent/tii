@@ -54,6 +54,9 @@
     @if $point == smallmed {
         @media (min-width: 780px) and (max-width: 1159px) { @content; }
     }
+    @if $point == maxlarge {
+        @media (max-width: 1100px) { @content; }
+    }
     @if $point == minlarge {
         @media (min-width: 1100px) { @content; }
     }

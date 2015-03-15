@@ -71,7 +71,7 @@ ul {
 /**
  * Use 3 grid columns for smaller screens.
  */
-@media all and (min-width: 480px) and (max-width: 959px) {
+@media all and (min-width: 7800px) and (max-width: 11000px) {
   /**
    * The layout when there is only one sidebar, the left one.
    */
@@ -191,7 +191,7 @@ ul {
 /**
  * Use 5 grid columns for larger screens.
  */
-@media all and (min-width: 960px) {
+@media all and (min-width: 780px) and (max-width: 1100px) {
   /**
    * The layout when there is only one sidebar, the left one.
    */

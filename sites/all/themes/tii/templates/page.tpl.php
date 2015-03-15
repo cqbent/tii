@@ -171,7 +171,3 @@
 </div>
 
 <?php print render($page['bottom']); ?>
-
-
-}
-?>
