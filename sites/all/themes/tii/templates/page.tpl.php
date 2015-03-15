@@ -172,50 +172,6 @@
 
 <?php print render($page['bottom']); ?>
 
-<?php
-if ($is_front) {
-    ?>
-    <script>
-    jQuery(document).ready(function($) {
-        $(".slider-list").zAccordion({
-            tabWidth: 50,
-            speed: 650,
-            auto: false,
-            slideClass: 'slider',
-            animationStart: function () {
-                $('.slider-list').find('li.slider-open .views-field-field-slice-image').css('display', 'none');
-                $('.slider-list').find('li.slider-open .views-field-title, li.slider-open .views-field-field-image').css('display','block');
-            },
-            animationComplete: function () {
-                $('.slider-list').find('li.slider-closed .views-field-title, li.slider-closed .views-field-field-image').fadeOut();
-                $('.slider-list').find('li.slider-closed .views-field-field-slice-image').fadeIn();
-            },
-            buildComplete: function() {
-                createSliderNav();
-            },
-            width: 950,
-            height: 325
-        });
-        function createSliderNav() {
-            // build nav controls
-            var s_count = $('.slider-list li').length;
-            var s_controls = ''; var active_init = ''
-            for (c = 0; c < s_count; c++) {
-                if (c == 0) { active_init = ' class="active"'; }
-                else { active_init = ''; }
-                s_controls += '<li'+active_init+'><span>'+c+'</span></li>';
-            }
-            $('.accordian-slider').append('<ul class="slider-nav">'+s_controls+'</ul>');
-            $(".slider-nav li").click(function() {
-                $(".slider-nav li").removeClass("active");
-                $(".slider-list").zAccordion("trigger", $(this).index());
-                $(this).addClass('active');
-                //return false;
-            });
-        }
-        
-    });
-    </script>
-    <?php
+
 }
 ?>

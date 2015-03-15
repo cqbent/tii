@@ -20,23 +20,63 @@ Drupal.behaviors.my_custom_behavior = {
     
     $(document).ready(function() {
         console.log('this');
-        if (typeof zAccordian == 'function') {
-            
+        if ($('body').hasClass('front')) {
+            createSliderNav();
             $(".slider-list").zAccordion({
-                tabWidth: 50,
+                tabWidth: 60,
                 speed: 650,
+                auto: true,
                 slideClass: 'slider',
                 animationStart: function () {
-                    //$('.slider-list').find('li.slider-open div').css('display', 'none');
-                    //$('.slider-list').find('li.slider-previous div').css('display', 'none');
+                    $('.slider-list').find('li.slider-open .views-field-field-slice-image').css('display', 'none');
+                    $('.slider-list').find('li.slider-open .views-field-title, li.slider-open .views-field-field-image').css('display','block');
+                    var s_index = $('.slider-list').find('li.slider-open').index();
+                    //$('.slider-nav li:nth-child('+s_index+')');
+                    activateNav(s_index + 1);
+                    //console.log(s_index);
                 },
                 animationComplete: function () {
-                    //$('.slider-list').find('li div').fadeIn(600);
+                    $('.slider-list').find('li.slider-closed .views-field-title, li.slider-closed .views-field-field-image').fadeOut();
+                    $('.slider-list').find('li.slider-closed .views-field-field-slice-image').fadeIn();
                 },
-                width: 905,
-                height: 298
+                buildComplete: function() {
+                    //createSliderNav();
+                },
+                width: 950,
+                height: 325
             });
-            
+        }
+        function createSliderNav() {
+            // build nav controls
+            var s_count = $('.slider-list li').length;
+            var s_controls = ''; var active_init = ''
+            for (c = 0; c < s_count; c++) {
+                if (c == 0) { active_init = ' class="active"'; }
+                else { active_init = ''; }
+                s_controls += '<li'+active_init+'><span>'+c+'</span></li>';
+            }
+            s_controls += '<li class="play-pause"><span></span></li>';
+            $('.accordian-slider').append('<ul class="slider-nav">'+s_controls+'</ul>');
+            $(".slider-nav li:not(.play-pause)").click(function() {
+                $(".slider-list").zAccordion("stop");
+                $(".slider-nav li.play-pause").addClass('paused');
+                $(".slider-list").zAccordion("trigger", $(this).index());
+            });
+            $(".slider-nav li.play-pause").click(function() {
+                if ($(this).hasClass('paused')) {
+                    $(".slider-list").zAccordion("start");
+                    $(this).removeClass('paused');
+                }
+                else {
+                    $(".slider-list").zAccordion("stop");
+                    $(this).addClass('paused');
+                }
+            });
+        }
+        function activateNav(i) {
+            $('.slider-nav li').removeClass("active");
+            $('.slider-nav li:nth-child('+i+')').addClass('active');
+            console.log('xx: '+i);
         }
         // if title in ckeditor image then create caption format
         $('.node .field-name-body img').each(function(index, element) {

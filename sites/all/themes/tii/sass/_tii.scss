@@ -10,8 +10,11 @@ and open the template in the editor.
 
 body {
     background-color: $black;
+    background-image: url(../images/background_dark.png); background-repeat:no-repeat;
+    background-size: cover;
     &.node-type-research, &.node-type-events, &.node-type-news-article {
         background-color: #fff;
+        background-image: url(../images/background_light.png); 
     }
 }
 
@@ -19,11 +22,12 @@ body {
     position: relative;
     max-width:100%;
     .container {
-        max-width:1160px;
+        max-width:1100px;
         padding:0 120px;
         min-height:700px;
         margin: 0 auto;
         position: relative;
+        z-index: 2;
     }
     a {
         text-decoration: none;
@@ -40,7 +44,7 @@ body {
         }
     }
     .main-menu {
-        position: absolute; right: 0; bottom: 0; margin: 0;
+        position: absolute; right: 0; bottom: -10px; margin: 0;
         font-family: 'DINWeb-MediumItalic';
         .menu {
             margin: 0; padding: 0;
@@ -103,6 +107,58 @@ body {
         
     }
 }
+.sharethis-buttons, .sharethis-block {
+    color: $blue; 
+    span {
+        font-size: 1.25em; cursor: pointer;
+        &:before {
+            font-family: 'FontAwesome'; 
+            padding-right: 10px; 
+        }
+        &:after {
+            
+        }
+    }
+    .st_facebook_custom {
+        &:before {
+            content: "\f09a"; 
+        }
+        &:after {
+            content: "Facebook"; 
+        }
+    }
+    .st_twitter_custom {
+        &:before {
+            content: "\f099"; 
+        }
+        &:after {
+            content: "Twitter"; 
+        }
+    }
+    .st_email_custom {
+        &:before {
+            content: "\f003"; 
+        }
+        &:after {
+            content: "Email"; 
+        }
+    }
+    .region-sidebar-second & {
+        padding: 20px;
+        span {
+            margin-bottom: 20px; display: block;
+        }
+    }
+    #content & {
+        h2 {
+            border-bottom: 1px $blue solid; margin-bottom: 10px;
+        }
+        span {
+            margin-right: 30px; display: inline-block;
+        }
+    }
+}
+
 
 // image styles
 .field-type-image {
@@ -154,12 +210,12 @@ body {
         -moz-transform: skewX(-12deg);
         -o-transform: skewX(-12deg);
         transform: skewX(-12deg);
-        margin-bottom: 55px;
+        margin-bottom: 40px;
         /* -webkit-clip-path: polygon(12px 0%, 100% 0%, -webkit-calc(100% - 12px) 100%, 0% 100%); */
     }
     h2, h3, .field-label {
         text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
-        font-weight: normal; margin-top:0;
+        font-weight: normal; 
     }
     h2 {
         color: $blue; margin-left:-15px;
@@ -167,23 +223,25 @@ body {
         &:before {
             @include diag-border($orange);
         }
-        
         a {
-            color: $blue;
+            color: $blue; 
         }
         &.orange {
             color: $orange;
             &:before {
                 @include diag-border($blue);
             }
-            
+        }
+        .node-type-research &, .node-type-events &, .node-type-news-article & {
+            margin-left: 0;
+            &:before { display: none; }
         }
     }
     h3, .field-label {
         color: $orange; font-size:1.1em;
     }
     p {
-        margin-top: 0; margin-bottom: .5em;
+        margin-top: 0; margin-bottom: 1em;
     }
     a {
         color: $white;
@@ -214,6 +272,11 @@ body {
                 color: $lightblue; text-transform: uppercase;
                 font-family: 'DINWeb-MediumItalic';
             }
+        }
+    }
+    .page-node & {
+        .node {
+            margin-left: 40px;
         }
     }
     
@@ -261,7 +324,10 @@ body {
     }
     .node-type-research &, .node-type-events &, .node-type-news-article & {
         a {
-            color: $blue;
+            color: $blue; text-decoration: underline;
+        }
+        .node {
+            margin-left: 0px;
         }
     }
     
@@ -284,6 +350,16 @@ body {
                 }
                 &.active {
                     color: $white;
+                }
+                &.play-pause {
+                    line-height: 1.25em;
+                    &:before {
+                        content: "\f04c"; font-family: 'FontAwesome';
+                        font-size: .875em;
+                    }
+                    &.paused:before {
+                        content: "\f04b";
+                    }
                 }
             }
         }
@@ -330,7 +406,7 @@ body {
                     &:before {
                         content: "\f0a9"; font-family: 'FontAwesome'; 
                         display: block; position: absolute; bottom: 20px;
-                        left: 10px;
+                        left: 15px;
                         transform: skewX(12deg); -webkit-transform: skewX(12deg);
                     }
                 }
@@ -491,7 +567,7 @@ body {
     background-color: #000; padding: 20px 0 20px 0; width:100%; 
     height: 110px; box-shadow: border-box;
     .inner {
-        max-width: 1160px; margin: 0 auto; position: relative;
+        max-width: 1100px; margin: 0 auto; position: relative;
         .block, p {
             margin: 0;
         }
@@ -526,7 +602,7 @@ body {
     */
     z-index: -1;
     width: 100%;
-    height: 100%;
+    height: calc(100% + 110px);
     position: absolute;
     top: 0;
     overflow: visible;
