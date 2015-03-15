@@ -82,7 +82,7 @@ function tii_events_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Monthly archive';
+  $handler->display->display_options['title'] = 'Past Events';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -128,7 +128,7 @@ function tii_events_views_default_views() {
 
   /* Display: Page */
   $handler = $view->new_display('page', 'Page', 'page');
-  $handler->display->display_options['path'] = 'past-events';
+  $handler->display->display_options['path'] = 'events/past-events';
 
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
