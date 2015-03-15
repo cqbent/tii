@@ -77,14 +77,14 @@ function tii_news_ds_layout_settings_info() {
         0 => 'post_date',
         1 => 'field_news_subtitle',
         2 => 'body',
-        3 => 'sharethis',
+        3 => 'field_news_author_footer',
       ),
     ),
     'fields' => array(
       'post_date' => 'ds_content',
       'field_news_subtitle' => 'ds_content',
       'body' => 'ds_content',
-      'sharethis' => 'ds_content',
+      'field_news_author_footer' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

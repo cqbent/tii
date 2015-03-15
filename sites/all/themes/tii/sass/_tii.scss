@@ -49,7 +49,7 @@ body {
         .menu {
             margin: 0; padding: 0;
             li {
-                list-style: none; float: left; 
+                list-style: none; float: left; font-size:17px;
                 a { 
                     display: block; padding:5px 20px; position: relative;
                     color: $white;
@@ -215,7 +215,7 @@ body {
     }
     h2, h3, .field-label {
         text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
-        font-weight: normal; 
+        font-weight: normal; margin-top:0; margin-bottom: .75em;
     }
     h2 {
         color: $blue; margin-left:-15px;
@@ -456,7 +456,7 @@ body {
         }
         .field-name-field-event-location {
             h3, p { margin: 0; }
-            h3 { color: $blue; }
+            h3 {  }
             margin-bottom: .5em;
         }
         .field-name-field-event-sponsors {
@@ -470,6 +470,12 @@ body {
         }
         .field-type-image {
             
+        }
+        .field-name-field-news-author-footer  {
+            color: $orange; font-style: italic;
+            a {
+                color: $orange;
+            }
         }
     }
     .view-research-summaries, .view-events, .view-past-events, .view-news-archive {
