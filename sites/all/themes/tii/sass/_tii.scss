@@ -217,6 +217,7 @@ body {
     #content & {
         h2 {
             border-bottom: 1px $blue solid; margin-bottom: 10px;
+            font-size: 1.25em;
         }
         span {
             margin-right: 30px; display: inline-block;
@@ -526,7 +527,7 @@ body {
             .views-field-title {
                 transform: skewX(12deg); -webkit-transform: skewX(12deg);
                 position: absolute; top: 10px; left: 40px;
-                color: $white; font-family: 'DINWeb-Italic';
+                color: $white; font-family: 'DINWeb-MediumItalic';
                 
                 z-index: 2;
                 a { color: $white; }
