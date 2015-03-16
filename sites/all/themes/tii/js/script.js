@@ -23,7 +23,7 @@ Drupal.behaviors.my_custom_behavior = {
         if ($('body').hasClass('front')) {
             createSliderNav();
             $(".slider-list").zAccordion({
-                tabWidth: 60,
+                tabWidth: '6%',
                 speed: 650,
                 auto: true,
                 slideClass: 'slider',
@@ -42,7 +42,7 @@ Drupal.behaviors.my_custom_behavior = {
                 buildComplete: function() {
                     //createSliderNav();
                 },
-                width: 950,
+                width: '100%',
                 height: 325
             });
         }
@@ -108,6 +108,21 @@ Drupal.behaviors.my_custom_behavior = {
                 $('.block-menu-block').addClass('menu-active');
             }
         });
+        
+        /* extend page to bottom of screen */
+        var w_height = ($(window).height() - 110);
+        $('#page > .container').css('min-height', w_height);
+        console.log($('#footer').height());
+        
+        /* set position of h1 tag depending on how many lines it has */
+        var h_title = $('h1.page__title').height();
+        console.log(h_title);
+        if (h_title > 110) {
+            $('h1.page__title').addClass('three');
+        }
+        else if (h_title > 55) {
+            $('h1.page__title').addClass('two');
+        }
         
         /*
          * for each slanted image:

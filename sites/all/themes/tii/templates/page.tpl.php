@@ -139,7 +139,7 @@
         </svg>
         
         <style>
-            .field-type-image, .views-field-field-image, .views-field-field-slice-image {
+            .field-type-image, .views-field-field-image, .views-field-field-slice-image, .image {
                 -webkit-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
                 -moz-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
                 shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);

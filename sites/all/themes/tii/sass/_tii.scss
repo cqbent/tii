@@ -10,11 +10,11 @@ and open the template in the editor.
 
 body {
     background-color: $black;
-    background-image: url(../images/background_dark.png); background-repeat:no-repeat;
-    background-size: cover;
+    background-image: url(../images/background_dark_alt.png); background-repeat:no-repeat;
+    background-size: 200%;
     &.node-type-research, &.node-type-events, &.node-type-news-article {
         background-color: #fff;
-        background-image: url(../images/background_light.png); 
+        background-image: url(../images/background_light_alt.png); 
     }
 }
 
@@ -64,11 +64,26 @@ body {
             }
             .menu-block-wrapper > .menu { 
                 padding:0; list-style: none; margin: 0; display: none;
+                margin-top: 45px; border-top:1px $gray solid;
                 > li { 
                     list-style: none; margin:0;
-                    background: #000;  
+                    background: #000;  position: relative;
                     border-bottom:1px $gray solid; padding:10px 20px;
-                    a { color: $white; }
+                    a { 
+                        display: block; color: $white; 
+                        &:after {
+                            
+                        }
+                    }
+                    &.expanded {
+                        &:after {
+                            content: "+"; position: absolute; right: 20px;
+                            top: 10px; color: $white; font-family: 'DINWeb-Medium';
+                        }
+                        &:hover:after {
+                            content: "-";
+                        }
+                    }
                     .menu { 
                         display: none; margin:10px -20px 0 -20px; padding:0;
                         li { 
@@ -128,7 +143,7 @@ body {
                     }
                     ul.menu {
                         background-color: #464646; position:absolute; 
-                        display:none;
+                        display:none; padding:7px 0;
                         li {
                             float: none; position: relative;
                             a {
@@ -156,12 +171,13 @@ body {
     }
 }
 .sharethis-buttons, .sharethis-block {
+    h2.block-title { font-size: 1.25em; }
     color: $blue; 
     span {
-        font-size: 1.25em; cursor: pointer;
+        font-size: 1.175em; cursor: pointer;
         &:before {
             font-family: 'FontAwesome'; 
-            padding-right: 10px; 
+            display: inline-block; width: 30px;
         }
         &:after {
             
@@ -193,8 +209,9 @@ body {
     }
     .region-sidebar-second & {
         padding: 20px;
+        h2.block-title { margin-bottom: 1em; }
         span {
-            margin-bottom: 20px; display: block;
+            margin-bottom: 12px; display: block;
         }
     }
     #content & {
@@ -203,6 +220,7 @@ body {
         }
         span {
             margin-right: 30px; display: inline-block;
+            
         }
     }
 }
@@ -265,9 +283,22 @@ body {
         transform: skewX(-12deg);
         margin-bottom: 40px;
         /* -webkit-clip-path: polygon(12px 0%, 100% 0%, -webkit-calc(100% - 12px) 100%, 0% 100%); */
+        &.two {
+            margin-left: -58px;
+        }
+        &.three {
+            margin-left: -64px;
+        }
         @include breakpoint(maxsmall) {
             margin-left:-22px;
+            &.two {
+                margin-left: -28px;
+            }
+            &.three {
+                margin-left: -34px;
+            }
         }
+        
     }
     h2, h3, .field-label {
         text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
@@ -330,13 +361,14 @@ body {
             }
         }
     }
-    .page-node & {
-        .node {
-            @include breakpoint(minsmall) {
-                margin-left:40px;
+    
+    .node {
+        @include breakpoint(minsmall) {
+            margin-left: 40px;
+            .page-node.mainsection &, .node-type-research & {
+                margin-left: 100px;
             }
         }
-        
     }
     
     
@@ -347,11 +379,14 @@ body {
         padding: 0; margin: 0; list-style:none;
         li {
             margin: 0; padding: 0;
-            img {
+            .image {
                 display: block; float: left; margin-right: 20px;
                 -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
                 -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
                 shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+            }
+            img {
+                
             }
             .team-title { margin-bottom: 5px; }
             &:first-child {
@@ -391,7 +426,11 @@ body {
     }
     
     .front & {
+        margin-left: 100px;
         h1.title { display: none; }
+        @include breakpoint(smallmed) {
+            margin-left: 20px;
+        }
     }
     // home page styles
     // accordian slider
@@ -425,7 +464,7 @@ body {
     }
     .accordian-list {
         .slider-list {
-            margin: 0 80px 10px 0; 
+            margin: 0 40px 10px 0; 
             transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
             max-width:100%;
             float: right; 
@@ -433,10 +472,11 @@ body {
                 border-left:13px $black solid;
                 .views-field-field-image {
                     position: absolute; transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                    margin-left:-35px;
+                    margin-left:-35px; height: 100%;
                     width: calc(100% + 80px);
+                    .field-content { height: 100%; }
                     image, img { 
-                        width: 100%; 
+                        width: 100%; height: 100%;
                     }
                 }
                 .views-field-title {
@@ -446,7 +486,7 @@ body {
                     color: $white; font-family: 'DINWeb-Italic';
                     text-transform: uppercase;
                     a { color: $white; }
-                    background: rgba(1,174,211,.5);
+                    /* background: rgba(1,174,211,.5); */
                     .title {
                         font-size: 1.75em;
                     }
@@ -465,7 +505,7 @@ body {
                     &:before {
                         content: "\f0a9"; font-family: 'FontAwesome'; 
                         display: block; position: absolute; bottom: 20px;
-                        left: 15px;
+                        width:6%; text-align: center;
                         transform: skewX(12deg); -webkit-transform: skewX(12deg);
                     }
                 }
@@ -477,29 +517,41 @@ body {
         }
     }
     .homepage-news-block {
-        max-width: 950px; clear:both; transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
-        float: right; margin: 20px 130px 0 0;
+        clear:both; 
+        transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
+        float: right; margin: 20px 130px 0 0; width: 100%;
         .views-row {
             position: relative; margin-bottom: 20px; 
-            
+            height:75px; overflow-y: hidden;
             .views-field-title {
                 transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                position: absolute; top: 20px; left: 40px;
+                position: absolute; top: 10px; left: 40px;
                 color: $white; font-family: 'DINWeb-Italic';
-                text-transform: uppercase;
+                
                 z-index: 2;
                 a { color: $white; }
                 .title {
-                    font-size: 1.75em;
+                    font-size: 1.25em;
                 }
                 .subtitle {
+                    text-transform: uppercase;
+                    /*
                     &:before {
                         content: "\f0a9"; font-family: 'FontAwesome'; 
                         padding-right:10px;
                     }
+                    */
 
                 }
             }
+            .views-field-field-slice-image {
+                img {
+                    height: 50%; width: auto;
+                }
+            }
+        }
+        @include breakpoint(maxlarge) {
+            
         }
     }
 
@@ -628,9 +680,7 @@ body {
         @include breakpoint(minlarge) {
             padding: 20px;
         }
-        
     }
-    
     .node-type-research &, .node-type-events &, .node-type-news-article & {
         .news-archive, .past-events {
             background: none;
@@ -638,6 +688,9 @@ body {
                 color: $gray;
             }
         }
+    }
+    @include breakpoint(maxsmall) {
+        display: none;
     }
     
 }

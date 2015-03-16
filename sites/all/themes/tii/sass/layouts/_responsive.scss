@@ -154,7 +154,7 @@ $zen-auto-include-item-base: false;
 /**
  * Use 5 grid columns for larger screens.
  */
-@media all and (min-width: 780px) and (max-width: 1100px) {
+@media all and (min-width: 780px) {
 
   $zen-column-count: 5;
 
