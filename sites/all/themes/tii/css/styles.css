@@ -1847,7 +1847,7 @@ body {
   max-width: 100%;
 }
 /* line 20, ../sass/_tii.scss */
-#page.node-type-research, #page.node-type-events, #page.node-type-news-article {
+.node-type-research #page, .node-type-events #page, .node-type-news-article #page {
   background-color: #fff;
   background-image: url(../images/white-background-lines.png);
 }

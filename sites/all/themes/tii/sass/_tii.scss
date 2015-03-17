@@ -17,7 +17,7 @@ body {
     background-color: $black;
     background-image: url(../images/grey-background-lines.png); background-repeat:no-repeat;
     background-size: 200%; background-position-x: center;
-    &.node-type-research, &.node-type-events, &.node-type-news-article {
+    .node-type-research &, .node-type-events &, .node-type-news-article & {
         background-color: #fff;
         background-image: url(../images/white-background-lines.png); 
     }
