@@ -69,6 +69,7 @@ function tii_preprocess_page(&$variables, $hook) {
     drupal_add_css('//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', 'external');
     if (drupal_is_front_page()) {
         drupal_add_js(drupal_get_path('theme', 'tii') .'/js/jquery.zaccordion.js', 'file');
+        drupal_add_js(drupal_get_path('theme', 'tii') .'/js/jquery.slides.js', 'file');
     }
 }
 // */

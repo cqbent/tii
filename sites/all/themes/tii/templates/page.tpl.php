@@ -111,33 +111,7 @@
       </aside>
     <?php endif; ?>
 
-  </div>
-
-        <svg id="tii-line">
-            <line x1="130" y1="100%" x2="130" y2="0" stroke-width="2" 
-            stroke="#e5751f" transform="rotate(12)"/>
-        </svg>
-        
-        <svg class="svg-defs">
-            <defs>
-                <clipPath id="imageclip" clipPathUnits="objectBoundingBox">
-                    <polygon points=".13 0, 1 0, .87 1, 0 1" />
-                </clipPath>
-                <clipPath id="sliderclip">
-                    <polygon points="75 0, 755 0, 680 298, 0 298" />
-                </clipPath>
-                <clipPath id="sliceclip">
-                    <polygon points="75 0, 125 0, 75 298, 0 298" />
-                </clipPath>
-                <clipPath id="clipPath">
-                    <rect x="50" y="0" width="200" height="190" transform="skewX(-13)" />
-                </clipPath>
-                <clipPath id="imageclip-alt" clipPathUnits="objectBoundingBox">
-                    <polygon points=".20 0, 1 0, .80 1, 0 1" />
-                </clipPath>
-            </defs>
-        </svg>
-        
+  </div>        
         <style>
             .field-type-image, .views-field-field-image, .views-field-field-slice-image, .image {
                 -webkit-shape-outside: polygon(13% 0, 100% 0, 87% 100%, 0 100%);
@@ -148,24 +122,33 @@
             .field-type-image image {
                 clip-path: url(#imageclip);
             }
-            /*
-            .views-field-field-image image {
-                clip-path: url(#sliderclip);
-            }
-            .views-field-field-slice-image image {
-                clip-path: url(#sliceclip);
-            }
-            .views-field-field-image {
-                -webkit-shape-inside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-                -moz-shape-inside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-                shape-inside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-
-            }
-            */
+            
         </style>
         
     </div>
-
+    <svg id="tii-line">
+        <line x1="130" y1="100%" x2="130" y2="0" stroke-width="2" 
+        stroke="#e5751f" transform="rotate(12)"/>
+    </svg>
+    <svg class="svg-defs">
+        <defs>
+            <clipPath id="imageclip" clipPathUnits="objectBoundingBox">
+                <polygon points=".13 0, 1 0, .87 1, 0 1" />
+            </clipPath>
+            <clipPath id="sliderclip">
+                <polygon points="75 0, 755 0, 680 298, 0 298" />
+            </clipPath>
+            <clipPath id="sliceclip">
+                <polygon points="75 0, 125 0, 75 298, 0 298" />
+            </clipPath>
+            <clipPath id="clipPath">
+                <rect x="50" y="0" width="200" height="190" transform="skewX(-13)" />
+            </clipPath>
+            <clipPath id="imageclip-alt" clipPathUnits="objectBoundingBox">
+                <polygon points=".20 0, 1 0, .80 1, 0 1" />
+            </clipPath>
+        </defs>
+    </svg>
     <?php print render($page['footer']); ?>
 
 </div>

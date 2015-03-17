@@ -19,8 +19,9 @@ Drupal.behaviors.my_custom_behavior = {
 
     
     $(document).ready(function() {
-        console.log('this');
-        if ($('body').hasClass('front')) {
+        var w_height = $(window).height();
+        var w_width = $(window).width();
+        if ($('body').hasClass('front') && w_width > 779) {
             createSliderNav();
             $(".slider-list").zAccordion({
                 tabWidth: '6%',
@@ -44,6 +45,23 @@ Drupal.behaviors.my_custom_behavior = {
                 },
                 width: '100%',
                 height: 325
+            });
+        }
+        if ($('body').hasClass('front') && w_width < 780) {
+            $('.slider-list').slidesjs({
+                width: 700,
+                height: 325,
+                navigation: {
+                    effect: "fade"
+                },
+                pagination: {
+                    effect: "fade"
+                },
+                effect: {
+                    fade: {
+                        speed: 400
+                    }
+                }
             });
         }
         function createSliderNav() {
@@ -110,8 +128,7 @@ Drupal.behaviors.my_custom_behavior = {
         });
         
         /* extend page to bottom of screen */
-        var w_height = ($(window).height() - 110);
-        $('#page > .container').css('min-height', w_height);
+        $('#page').css('min-height', w_height);
         console.log($('#footer').height());
         
         /* set position of h1 tag depending on how many lines it has */
