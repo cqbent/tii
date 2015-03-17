@@ -128,7 +128,9 @@ Drupal.behaviors.my_custom_behavior = {
         });
         
         /* extend page to bottom of screen */
-        $('#page').css('min-height', w_height);
+        c_height = $('#page > .container').height()
+        f_height = w_height - c_height;
+        $('#footer').css('min-height', f_height);
         console.log($('#footer').height());
         
         /* set position of h1 tag depending on how many lines it has */

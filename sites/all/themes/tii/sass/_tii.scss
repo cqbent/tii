@@ -9,16 +9,18 @@ and open the template in the editor.
 */
 
 body {
-    background-color: $black;
-    background-image: url(../images/background_dark_alt.png); background-repeat:no-repeat;
-    background-size: 200%;
-    &.node-type-research, &.node-type-events, &.node-type-news-article {
-        background-color: #fff;
-        background-image: url(../images/background_light_alt.png); 
-    }
+    background-color: #000;
+    
 }
 
 #page {
+    background-color: $black;
+    background-image: url(../images/grey-background-lines.png); background-repeat:no-repeat;
+    background-size: 200%; background-position-x: center;
+    &.node-type-research, &.node-type-events, &.node-type-news-article {
+        background-color: #fff;
+        background-image: url(../images/white-background-lines.png); 
+    }
     position: relative;
     max-width:100%;
     .container {
@@ -444,7 +446,7 @@ body {
         margin: 0;
         .slider-nav {
             clear: both; padding: 0; list-style: none;
-            float: right; margin: 0 40px 0 0;
+            float: right; margin: 0 80px 0 0;
             li {
                 margin: 0; padding: 0; cursor: pointer; float: left;
                 color: $gray;
@@ -472,6 +474,7 @@ body {
     .accordian-list {
         .slider-list {
             transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
+            margin-bottom:10px;
             .slider, .slidesjs-container {
                 .views-field-title {
                     transform: skewX(12deg); -webkit-transform: skewX(12deg);
@@ -522,6 +525,11 @@ body {
                         transform: skewX(12deg); -webkit-transform: skewX(12deg);
                     }
                 }
+                &:first-child {
+                    &.slider-open {
+                        border:none;
+                    }
+                }
                 &.slider-open, &.views-row-first {
                     .views-field-field-slice-image { display: none; }
                 }
@@ -559,17 +567,25 @@ body {
                     
                 }
             }
-            @include breakpoint(minsmall) {
-                margin: 0 40px 10px 0;
+        }
+        @include breakpoint(minsmall) {
+            margin-right: 40px;
+            .slider-list {
                 max-width:100%;
                 .slider {
                     float: right; 
                 }
             }
-            @include breakpoint(maxsmall) {
+            
+        }
+        @include breakpoint(maxsmall) {
+            .slider-list, .slidesjs-container {
                 padding: 0 20px 0 0; margin: 0; list-style: none;
                 .views-field-title {
-                    padding: 10px;
+                    padding: 10px; 
+                    .title {
+                        font-size:1.25em !important; line-height: normal;
+                    }
                     .subtitle {
                         display: none;
                     }
@@ -591,6 +607,7 @@ body {
                 }
                 .subtitle {
                     text-transform: uppercase;
+                    font-family: 'DINWeb-Medium';
                     /*
                     &:before {
                         content: "\f0a9"; font-family: 'FontAwesome'; 
