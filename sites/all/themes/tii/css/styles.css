@@ -2463,7 +2463,7 @@ body.node-type-research, body.node-type-events, body.node-type-news-article {
   padding: 0;
   list-style: none;
   float: right;
-  margin: 0 110px 0 0;
+  margin: 0 40px 0 0;
 }
 /* line 448, ../sass/_tii.scss */
 #content .accordian-slider .slider-nav li {
