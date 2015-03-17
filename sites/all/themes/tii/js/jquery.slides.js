@@ -92,6 +92,7 @@
         $slide = $(this);
         return $slide.attr("slidesjs-index", i);
       });
+      /*
       if (this.data.touch) {
         $(".slidesjs-control", $element).on("touchstart", function(e) {
           return _this._touchstart(e);
@@ -103,6 +104,7 @@
           return _this._touchend(e);
         });
       }
+      */
       $element.fadeIn(0);
       this.update();
       if (this.data.touch) {
