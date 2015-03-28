@@ -58,11 +58,11 @@ function tii_preprocess_html(&$variables, $hook) {
                 '#tag' => 'meta',
                 '#attributes' => array(
                     "property" => "og:image",
-                    "content" => t($imgthumb),
+                    "content" => t($img),
                 ),
             );
             drupal_add_html_head($element,'og_image');
-            dsm($imgthumb);
+            //dsm($imgthumb);
         }
     }
     /*
