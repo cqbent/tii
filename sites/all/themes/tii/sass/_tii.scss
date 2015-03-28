@@ -329,9 +329,7 @@ body {
             .node-type-research &, .node-type-events &, .node-type-news-article & {
                 margin-left: 0;
                 &:before { display: none; }
-                .field-name-field-image {
-                    display: none;
-                }
+                
             }
             &.first {
                 margin-top: 0;
@@ -435,6 +433,9 @@ body {
             }
             .node {
                 margin-left: 0px;
+            }
+            .field-name-field-image {
+                display: none;
             }
         }
 
