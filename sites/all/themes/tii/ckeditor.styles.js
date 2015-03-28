@@ -11,6 +11,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
     CKEDITOR.addStylesSet( 'drupal',
     [
             /* TII custom text classes */
+        { name : 'Header First (h2)'	, element : 'h2', attributes : { 'class' : 'first' } },  
         { name : 'Team Name (h3)'	, element : 'h3', attributes : { 'class' : 'team-name' } },  
         { name : 'Team Job Title (p)'	, element : 'p', attributes : { 'class' : 'team-title' } },  
         { name : 'Small Text', element : 'span', attributes : { 'class' : 'smalltext' } },

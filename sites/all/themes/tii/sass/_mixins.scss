@@ -78,7 +78,10 @@
     }
     .column-#{$columns} { margin-bottom: 20px; }
     @while $i <= $columns {
-        .column-#{$i} { @include zen-grid-item(1, $i); }
+        .column-#{$i} { 
+            @include zen-grid-item(1, $i); 
+            padding-right: 20px;
+        }
         $i: $i+1;
     }
 }

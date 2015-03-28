@@ -61,6 +61,10 @@ Drupal.behaviors.my_custom_behavior = {
                     fade: {
                         speed: 400
                     }
+                },
+                play: {
+                    active: true,
+                    auto: true,
                 }
             });
         }

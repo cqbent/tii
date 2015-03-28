@@ -17,6 +17,7 @@ body {
     background-color: $black;
     background-image: url(../images/grey-background-lines.png); background-repeat:no-repeat;
     background-size: 200%; background-position-x: center;
+    overflow: hidden;
     .node-type-research &, .node-type-events &, .node-type-news-article & {
         background-color: #fff;
         background-image: url(../images/white-background-lines.png); 
@@ -40,6 +41,7 @@ body {
     }
     a {
         text-decoration: none;
+        &:active { outline: none; }
     }
 }
 
@@ -122,11 +124,12 @@ body {
                         &:before {
                             @include diag-border($orange);
                             margin-left:-20px; padding-right: 15px;
+                            line-height: 35px;
                         }
                         .node-type-research &, .node-type-events &, .node-type-news-article & {
                             color: $gray;
                         }
-                        &:hover, &.active {
+                        &:hover, &.active, &.active-trail {
                             color: $blue;
                         }
                         /*
@@ -173,7 +176,7 @@ body {
     }
 }
 .sharethis-buttons, .sharethis-block {
-    h2.block-title { font-size: 1.25em; }
+    h2.block-title { font-size: 21px; font-weight: normal; }
     color: $blue; 
     span {
         font-size: 1.175em; cursor: pointer;
@@ -206,20 +209,23 @@ body {
             content: "\f003"; 
         }
         &:after {
-            content: "Email"; 
+            content: "E-mail"; 
         }
     }
     .region-sidebar-second & {
-        padding: 20px;
-        h2.block-title { margin-bottom: 1em; }
+        padding: 0 20px;
+        h2.block-title { margin-bottom: 1em;  }
         span {
             margin-bottom: 12px; display: block;
         }
+        .node-type-news-article & {
+            margin-top:40px;
+        }
     }
-    #content & {
+    #main #content & {
         h2 {
             border-bottom: 1px $blue solid; margin-bottom: 10px;
-            font-size: 1.25em;
+            font-size: 21px;
         }
         span {
             margin-right: 30px; display: inline-block;
@@ -265,496 +271,532 @@ body {
     }
 }
 #main {
-    padding-top:3em;
-}
-
-#content {
-    color: $white;
-    .node-type-research &, .node-type-events &, .node-type-news-article & {
-        color: $black;
-    }
-    h1.title {
-        margin-left:-52px;
-        background-color: $orange;
-        color: #fff;
-        font-family: 'DINWeb-Medium'; font-weight: normal;
-        padding:5px 20px 2px 20px;
-        display: inline-block; text-transform: uppercase;
-        -webkit-transform: skew(-12deg);
-        -moz-transform: skewX(-12deg);
-        -o-transform: skewX(-12deg);
-        transform: skewX(-12deg);
-        margin-bottom: 40px;
-        /* -webkit-clip-path: polygon(12px 0%, 100% 0%, -webkit-calc(100% - 12px) 100%, 0% 100%); */
-        &.two {
-            margin-left: -58px;
+    padding-top:3em; padding-bottom: 60px;
+    #content {
+        color: $white;
+        .node-type-research &, .node-type-events &, .node-type-news-article & {
+            color: $black;
         }
-        &.three {
-            margin-left: -64px;
-        }
-        @include breakpoint(maxsmall) {
-            margin-left:-22px;
+        h1.title {
+            margin-left:-52px;
+            background-color: $orange;
+            color: #fff;
+            font-family: 'DINWeb-Medium'; font-weight: normal;
+            padding:5px 20px 2px 20px;
+            display: inline-block; text-transform: uppercase;
+            -webkit-transform: skew(-12deg);
+            -moz-transform: skewX(-12deg);
+            -o-transform: skewX(-12deg);
+            transform: skewX(-12deg);
+            margin-bottom: 40px;
+            /* -webkit-clip-path: polygon(12px 0%, 100% 0%, -webkit-calc(100% - 12px) 100%, 0% 100%); */
             &.two {
-                margin-left: -28px;
+                margin-left: -58px;
             }
             &.three {
-                margin-left: -34px;
+                margin-left: -64px;
+            }
+            @include breakpoint(maxsmall) {
+                margin-left:-22px;
+                &.two {
+                    margin-left: -28px;
+                }
+                &.three {
+                    margin-left: -32px;
+                }
+            }
+
+        }
+        h2, h3, .field-label {
+            text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
+            font-weight: normal; margin-top:1.5em; margin-bottom: .75em;
+        }
+        h2 {
+            color: $blue; margin-left:-15px;
+            font-size: 1.6em; line-height: 1.25em;
+            &:before {
+                @include diag-border($orange);
+            }
+            a {
+                color: $blue; 
+            }
+            &.orange {
+                color: $orange;
+                &:before {
+                    @include diag-border($blue);
+                }
+            }
+            .node-type-research &, .node-type-events &, .node-type-news-article & {
+                margin-left: 0;
+                &:before { display: none; }
+            }
+            &.first {
+                margin-top: 0;
             }
         }
-        
-    }
-    h2, h3, .field-label {
-        text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; position: relative;
-        font-weight: normal; margin-top:0; margin-bottom: .75em;
-    }
-    h2 {
-        color: $blue; margin-left:-15px;
-        font-size: 1.6em; line-height: 1.25em;
-        &:before {
-            @include diag-border($orange);
+        h3, .field-label {
+            color: $orange; font-size:1.1em;
+        }
+        p {
+            margin-top: 0; margin-bottom: 1em;
         }
         a {
-            color: $blue; 
+            color: $blue;
         }
-        &.orange {
-            color: $orange;
-            &:before {
-                @include diag-border($blue);
+        .team-name {
+            margin: 0; font-family: 'DINWeb-Medium';
+        }
+        .team-title {
+            color: $blue; margin: 0;
+        }
+        .node {
+            .group-left {
+
+            }
+        }
+        .field-name-title {
+            h2 {
+                &:before { display: none; }
+            }
+        }
+
+        .field-name-body {
+            .nbimage {
+                padding-bottom: 10px; border-bottom: 1px $lightblue solid; 
+                margin-bottom: 20px;
+                img { width: 100%; }
+                .imgtitle {
+                    color: $lightblue; text-transform: uppercase;
+                    font-family: 'DINWeb-MediumItalic';
+                }
+            }
+        }
+
+        .node {
+            @include breakpoint(minsmall) {
+                margin-left: 40px;
+                .page-node &, .node-type-research & {
+                    margin-left: 100px;
+                }
+                .node-type-events &, .node-type-news-article & {
+                    margin-left: 40px;
+                }
+            }
+        }
+
+        // team page multi column layout
+        .team-list {
+            padding: 0; margin: 0; list-style:none;
+            li {
+                margin: 0; padding: 0;
+                .image {
+                    display: block; float: left; margin-right: 20px;
+                    -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                    -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                    shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
+                }
+                img {
+
+                }
+                .team-title { margin-bottom: 5px; }
+                &:first-child {
+
+                }
+            }
+        }
+        .steering-committee-list {
+            /* column-count: 3; -webkit-column-count: 3; -moz-column-count: 3; */
+            margin: 0; padding: 0; list-style: none;
+            li {
+                margin: 0 0 0px 0; padding:5px 0 0 0;
+                width: 80%; 
+                .team-name {
+                    color: $blue; font-family: 'DINWeb-Medium';
+                    border-bottom: 1px $gray solid; padding: 0 0 5px 0;
+                    margin-bottom: 5px; cursor: pointer;
+                }
+                .team-title {
+                    color: $orange; font-size: 1em;
+                }
+                p { font-size: .875em; display: none; }
+                &.active {
+                    p {
+                        display: block;
+                    }
+                }
             }
         }
         .node-type-research &, .node-type-events &, .node-type-news-article & {
-            margin-left: 0;
-            &:before { display: none; }
-        }
-    }
-    h3, .field-label {
-        color: $orange; font-size:1.1em;
-    }
-    p {
-        margin-top: 0; margin-bottom: 1em;
-    }
-    a {
-        color: $white;
-    }
-    .team-name {
-        margin: 0; font-family: 'DINWeb-Medium';
-    }
-    .team-title {
-        color: $blue; margin: 0;
-    }
-    .node {
-        .group-left {
-            
-        }
-    }
-    .field-name-title {
-        h2 {
-            &:before { display: none; }
-        }
-    }
-    
-    .field-name-body {
-        .nbimage {
-            padding-bottom: 10px; border-bottom: 1px $lightblue solid; 
-            margin-bottom: 20px;
-            img { width: 100%; }
-            .imgtitle {
-                color: $lightblue; text-transform: uppercase;
-                font-family: 'DINWeb-MediumItalic';
+            a {
+                color: $blue; text-decoration: underline;
+            }
+            .node {
+                margin-left: 0px;
             }
         }
-    }
-    
-    .node {
-        @include breakpoint(minsmall) {
-            margin-left: 40px;
-            .page-node &, .node-type-research & {
-                margin-left: 100px;
+
+        .front & {
+            h1.title { display: none; }
+            @include breakpoint(minsmall) {
+                margin-left: 80px;
             }
-            .node-type-events &, .node-type-news-article & {
-                margin-left: 40px;
+            @include breakpoint(smallmed) {
+                margin-left: 20px;
             }
         }
-    }
-    
-    
-    
-    
-    // team page multi column layout
-    .team-list {
-        padding: 0; margin: 0; list-style:none;
-        li {
-            margin: 0; padding: 0;
-            .image {
-                display: block; float: left; margin-right: 20px;
-                -webkit-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-                -moz-shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-                shape-outside: polygon(15% 0, 100% 0, 85% 100%, 0 100%);
-            }
-            img {
-                
-            }
-            .team-title { margin-bottom: 5px; }
-            &:first-child {
-                
-            }
-        }
-    }
-    .steering-committee-list {
-        /* column-count: 3; -webkit-column-count: 3; -moz-column-count: 3; */
-        margin: 0; padding: 0; list-style: none;
-        li {
-            margin: 0 0 0px 0; padding:5px 0 0 0;
-            width: 80%; 
-            .team-name {
-                color: $blue; font-family: 'DINWeb-Medium';
-                border-bottom: 1px $gray solid; padding: 0 0 5px 0;
-                margin-bottom: 5px; cursor: pointer;
-            }
-            .team-title {
-                color: $orange; font-size: 1em;
-            }
-            p { font-size: .875em; display: none; }
-            &.active {
-                p {
-                    display: block;
-                }
-            }
-        }
-    }
-    .node-type-research &, .node-type-events &, .node-type-news-article & {
-        a {
-            color: $blue; text-decoration: underline;
-        }
-        .node {
-            margin-left: 0px;
-        }
-    }
-    
-    .front & {
-        h1.title { display: none; }
-        @include breakpoint(minsmall) {
-            margin-left: 100px;
-        }
-        @include breakpoint(smallmed) {
-            margin-left: 20px;
-        }
-    }
-    // home page styles
-    // accordian slider
-    .accordian-slider {
-        margin: 0;
-        .slider-nav {
-            clear: both; padding: 0; list-style: none;
-            float: right; margin: 0 80px 0 0;
-            li {
-                margin: 0; padding: 0; cursor: pointer; float: left;
-                color: $gray;
-                span { visibility: hidden; }
-                &:before {
-                    content: "\2022"; font-size:2em;
-                }
-                &.active {
-                    color: $white;
-                }
-                &.play-pause {
-                    line-height: 1.25em;
+        // home page styles
+        // accordian slider
+        .accordian-slider {
+            margin: 0;
+            .slider-nav {
+                clear: both; padding: 0; list-style: none;
+                float: right; margin: 0 80px 0 0;
+                li {
+                    margin: 0; padding: 0; cursor: pointer; float: left;
+                    color: $gray;
+                    span { visibility: hidden; }
                     &:before {
-                        content: "\f04c"; font-family: 'FontAwesome';
-                        font-size: 14px;
+                        content: "\2022"; font-size:2em;
                     }
-                    &.paused:before {
-                        content: "\f04b";
+                    &.active {
+                        color: $white;
+                    }
+                    &.play-pause {
+                        line-height: 1.25em;
+                        &:before {
+                            content: "\f04c"; font-family: 'FontAwesome';
+                            font-size: 14px;
+                        }
+                        &.paused:before {
+                            content: "\f04b";
+                        }
                     }
                 }
             }
+
         }
-        
-    }
-    .accordian-list {
-        .slider-list {
-            transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
-            margin-bottom:10px;
-            .slider, .slidesjs-container {
-                .views-field-title {
+        .accordian-list {
+            .slider-list {
+                transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
+                margin-bottom:10px;
+                .slider, .slidesjs-container {
+                    .views-field-title {
+                        transform: skewX(12deg); -webkit-transform: skewX(12deg);
+                        position: absolute; bottom: 0; 
+                        padding: 0 20px; width: 100%; box-sizing: border-box;
+                        color: $white; font-family: 'DINWeb-Italic';
+                        text-transform: uppercase;
+                        a { color: $white; }
+                        .field-content {
+                            display: table-cell; height: 96px; 
+                            vertical-align: middle;
+                            .title {
+                                font-size: 1.75em;
+                                margin: 0 0 5px 25px;
+                            }
+                            .subtitle {
+                                line-height: 1em;
+                                &:before {
+                                    content: "\f0a9"; font-family: 'FontAwesome'; 
+                                    padding-right:10px;
+                                }
+                            }
+                        }
+                        
+                    }
+                }
+                .slider {
+                    .views-field-field-image {
+                        transform: skewX(12deg); -webkit-transform: skewX(12deg);
+                        image, img { 
+                            width: 100%; height: 100%;
+                        }
+                    }
+                    .views-field-title {
+
+                    }
+                    border-left:13px $black solid;
+                    .views-field-field-image {
+                        position: absolute; 
+                        margin-left:-35px; height: 100%;
+                        width: calc(100% + 80px);
+                        .field-content { height: 100%; }
+                        image, img { 
+                            width: 100%; height: 100%;
+                        }
+                    }
+                    &.slider-closed {
+                        .views-field-title {
+                            display: none;
+                        }
+                        &:before {
+                            content: "\f0a9"; font-family: 'FontAwesome'; 
+                            display: block; position: absolute; bottom: 20px;
+                            width:6%; text-align: center;
+                            transform: skewX(12deg); -webkit-transform: skewX(12deg);
+                        }
+                    }
+                    &:first-child {
+                        &.slider-open {
+                            /* border:none; */
+                        }
+                    }
+                    &.slider-open, &.views-row-first {
+                        .views-field-field-slice-image { display: none; }
+                    }
+                }
+                .slidesjs-container {
+                    .views-field-field-image {
+                        transform: skewX(12deg); -webkit-transform: skewX(12deg);
+                    }
+                    .views-field-field-slice-image { display: none; }
+                    .views-field-field-image {
+                        margin-left:-20px; height: 100%;
+                        width: calc(100% + 80px);
+                    }
+                }
+                .slidesjs-navigation { 
+                    position: absolute; right: 30px;
+                    color: $black;
+                    
+                    &:after {
+                        font-family: 'FontAwesome';
+                        font-size: 14px; color: $gray;
+                    }
+                    &.slidesjs-play:after {
+                        content: "\f04b"; 
+                    }
+                    &.slidesjs-stop:after {
+                        content: "\f04c";
+                    }
+                    &.slidejs-previous, &.slidejs-next {
+                        display: none;
+                    }
+                }
+                .slidesjs-pagination {
                     transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                    position: absolute; bottom: 0; 
-                    padding: 20px; width: 100%; box-sizing: border-box;
-                    color: $white; font-family: 'DINWeb-Italic';
-                    text-transform: uppercase;
+                    list-style: none; padding: 0;
+                    float: right; color: $gray; margin: 0px 40px 20px 0;
+
+                    li {
+                        position: relative; float: left; margin-left:10px;
+                        a {
+                            z-index:1; position: relative;
+                            font-size:.5em; color: $gray; left: 2px; 
+                            padding: 0 4px;
+                            &:before {
+                                content: "\2022"; font-size:32px; position: absolute;
+                                top: 0; left: 0; line-height: 11px;
+                            }
+                            &.active {
+                                color: $white;
+                            }
+                        }
+
+                    }
+                }
+            }
+            @include breakpoint(minsmall) {
+                margin-right: 40px;
+                .slider-list {
+                    max-width:100%;
+                    .slider {
+                        float: right; 
+                    }
+                }
+
+            }
+            @include breakpoint(maxsmall) {
+                margin-left:20px;
+                .slider-list, .slidesjs-container {
+                    padding: 0 20px 5px 0; margin: 0; list-style: none;
+                    .views-field-title {
+                        padding: 10px; 
+                        .title {
+                            font-size:1em !important; line-height: normal;
+                            font-family: 'DINWeb-MediumItalic'
+                        }
+                        .subtitle {
+                            display: none;
+                        }
+                    }
+                }
+                .slider-list {
+                    width:calc(100% + 30px);
+                }
+            }
+        }
+        .homepage-news-block {
+            clear:both; 
+            .views-row {
+                position: relative; margin-bottom: 20px; 
+                font-family: 'DINWeb-MediumItalic';
+                .views-field-title {
+                    color: $white; 
+                    z-index: 2;
                     a { color: $white; }
                     .title {
-                        font-size: 1.75em;
+                        font-size: 1.25em;
                     }
                     .subtitle {
+                        text-transform: uppercase;
+                        font-family: 'DINWeb';
+                        /*
                         &:before {
                             content: "\f0a9"; font-family: 'FontAwesome'; 
                             padding-right:10px;
                         }
+                        */
+                    }
+                }
+                .views-field-field-slice-image {
+                    img {
+                        height: 50%; width: auto;
                     }
                 }
             }
-            .slider {
-                .views-field-field-image {
-                    transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                    image, img { 
-                        width: 100%; height: 100%;
+            @include breakpoint(maxsmall) {
+                .views-row {
+                    border-top-width: 2px; border-top-style: solid;
+                    padding-top: 10px;
+                    &:first-child {
+                        border-top-color: $blue;
                     }
+                    &:last-child {
+                        border-top-color: $orange;
+                    }
+                    &:nth-last-child(2) {
+                        border-top-color: $purple;
+                    }
+                }
+                .views-field-field-slice-image {
+                    display: none;
                 }
                 .views-field-title {
-                    
-                }
-                border-left:13px $black solid;
-                .views-field-field-image {
-                    position: absolute; 
-                    margin-left:-35px; height: 100%;
-                    width: calc(100% + 80px);
-                    .field-content { height: 100%; }
-                    image, img { 
-                        width: 100%; height: 100%;
-                    }
-                }
-                &.slider-closed {
-                    .views-field-title {
-                        display: none;
-                    }
-                    &:before {
-                        content: "\f0a9"; font-family: 'FontAwesome'; 
-                        display: block; position: absolute; bottom: 20px;
-                        width:6%; text-align: center;
-                        transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                    }
-                }
-                &:first-child {
-                    &.slider-open {
-                        border:none;
-                    }
-                }
-                &.slider-open, &.views-row-first {
-                    .views-field-field-slice-image { display: none; }
+
                 }
             }
-            .slidesjs-container {
-                .views-field-field-image {
-                    transform: skewX(12deg); -webkit-transform: skewX(12deg);
+            @include breakpoint(minsmall) {
+                transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
+                float: right; margin: 20px 120px 0 0; width: calc(100% - 40px);
+                .views-row {
+                    height:75px; overflow-y: hidden; 
                 }
-                .views-field-field-slice-image { display: none; }
-                .views-field-field-image {
-                    margin-left:-20px; height: 100%;
-                    width: calc(100% + 80px);
-                }
-            }
-            .slidesjs-navigation { display: none; }
-            .slidesjs-pagination {
-                transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                margin: 10px 0 0 0; list-style: none; padding: 0;
-                float: right; color: $gray; margin: 0px 0 20px 0;
-                
-                li {
-                    position: relative; float: left; margin-left:10px;
-                    a {
-                        z-index:1; position: relative;
-                        font-size:.5em; color: $gray; left: 2px; 
-                        padding: 0 4px;
-                        &:before {
-                            content: "\2022"; font-size:32px; position: absolute;
-                            top: 0; left: 0; line-height: 11px;
-                        }
-                        &.active {
-                            color: $white;
-                        }
-                    }
-                    
-                }
-            }
-        }
-        @include breakpoint(minsmall) {
-            margin-right: 40px;
-            .slider-list {
-                max-width:100%;
-                .slider {
-                    float: right; 
-                }
-            }
-            
-        }
-        @include breakpoint(maxsmall) {
-            .slider-list, .slidesjs-container {
-                padding: 0 20px 0 0; margin: 0; list-style: none;
                 .views-field-title {
-                    padding: 10px; 
-                    .title {
-                        font-size:1em !important; line-height: normal;
-                    }
-                    .subtitle {
-                        display: none;
-                    }
+                    transform: skewX(12deg); -webkit-transform: skewX(12deg);
+                    position: absolute; top: 15px; left: 40px;
+                }
+            }
+
+        }
+
+        // events, research, news
+        .node-events, .node-research, .node-news-article {
+            .field-name-field-event-subtitle, .field-name-field-news-subtitle {
+                color: $blue; text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; 
+                margin-bottom: 1em; font-size:1.6em;
+            }
+            .field-name-field-event-speaker-host {
+                margin-bottom: 20px;
+                h3, p { margin: 0; }
+            }
+            .field-name-field-event-location {
+                h3, p { margin: 0; }
+                h3 {  }
+                margin-bottom: 1em;
+            }
+            .field-name-field-event-sponsors {
+                .field-label {
+                    margin-bottom: .5em;
+                }
+                p { margin: 0; }
+            }
+            .field-name-post-date {
+                color: $orange; font-family: 'DINWeb-MediumItalic';  margin-bottom: 1em;
+            }
+            .field-name-node-link {
+                text-transform: capitalize;
+            }
+            .field-type-image {
+
+            }
+            .field-name-field-news-author-footer  {
+                color: $orange; font-style: italic;
+                a {
+                    color: $orange;
                 }
             }
         }
-    }
-    .homepage-news-block {
-        clear:both; 
-        .views-row {
-            position: relative; margin-bottom: 20px; 
-            font-family: 'DINWeb-MediumItalic';
-            .views-field-title {
-                color: $white; 
-                z-index: 2;
-                a { color: $white; }
-                .title {
-                    font-size: 1.25em;
-                }
-                .subtitle {
-                    text-transform: uppercase;
-                    font-family: 'DINWeb-Medium';
-                    /*
+        .view-research-summaries, .view-events, .view-past-events, .view-news-archive {
+
+            h2 { 
+                margin: 0; 
+            }
+            h3 { margin-bottom: 0; color: $white; }
+            p { margin: 0; }
+            .views-row:not(:last-child) {
+                margin-bottom: 50px;
+            }
+            .field-name-node-link {
+                a {
+                    font-family: 'DINWeb-MediumItalic'; 
+                    color: $white;
                     &:before {
-                        content: "\f0a9"; font-family: 'FontAwesome'; 
+                        content: "\f0a9"; font-family: 'FontAwesome'; color: $blue;
                         padding-right:10px;
                     }
-                    */
                 }
             }
-            .views-field-field-slice-image {
-                img {
-                    height: 50%; width: auto;
-                }
+            .field-name-field-event-subtitle {
+                color: $orange; font-size:1.1em;
+            }
+            .field-name-post-date {
+                color: $orange;
+            }
+            .field-name-body {
+                margin-bottom: 10px;
             }
         }
-        @include breakpoint(maxsmall) {
-            .views-row {
-                border-top-width: 2px; border-top-style: solid;
-                padding-top: 10px;
-                &:first-child {
-                    border-top-color: $blue;
-                }
-                &:last-child {
-                    border-top-color: $orange;
-                }
-                &:nth-last-child(2) {
-                    border-top-color: $purple;
-                }
+        // research
+        .node-research {
+            .field-label {
+                font-size: 1.6em; color: $blue; margin-bottom: .5em;
+                margin-top:1.5em;
             }
-            .views-field-field-slice-image {
-                display: none;
+            .field-name-body .field-label { margin-top: 0; }
+        }
+        .view-research-summaries {
+            h2 { 
+                color: $green; margin-bottom: .5em; 
+                a { color: $green; }
             }
-            .views-field-title {
-                
+        }
+        .grid-columns {
+            @include breakpoint(maxsmall) {
+                li {
+                    clear: both; 
+                    @include clearafter;
+                    
+                }
             }
         }
         @include breakpoint(minsmall) {
-            transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
-            float: right; margin: 20px 120px 0 0; width: calc(100% - 20px);
-            .views-row {
-                height:75px; overflow-y: hidden; 
-            }
-            .views-field-title {
-                transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                position: absolute; top: 15px; left: 40px;
-            }
-        }
-        
-    }
-
-    // events, research, news
-    .node-events, .node-research, .node-news-article {
-        .field-name-field-event-subtitle, .field-name-field-news-subtitle {
-            color: $blue; text-transform: uppercase; font-family: 'DINWeb-MediumItalic'; 
-            margin-bottom: 1em; font-size:1.6em;
-        }
-        .field-name-field-event-speaker-host {
-            margin-bottom: 20px;
-            h3, p { margin: 0; }
-        }
-        .field-name-field-event-location {
-            h3, p { margin: 0; }
-            h3 {  }
-            margin-bottom: .5em;
-        }
-        .field-name-field-event-sponsors {
-            p { margin: 0; }
-        }
-        .field-name-post-date {
-            color: $orange; font-family: 'DINWeb-MediumItalic';  margin-bottom: 1em;
-        }
-        .field-name-node-link {
-            text-transform: capitalize;
-        }
-        .field-type-image {
-            
-        }
-        .field-name-field-news-author-footer  {
-            color: $orange; font-style: italic;
-            a {
-                color: $orange;
-            }
-        }
-    }
-    .view-research-summaries, .view-events, .view-past-events, .view-news-archive {
-        
-        h2 { 
-            margin: 0; 
-        }
-        h3 { margin-bottom: 0; color: $white; }
-        p { margin: 0; }
-        .views-row {
-            margin-bottom: 50px;
-        }
-        .field-name-node-link {
-            a {
-                font-family: 'DINWeb-MediumItalic'; 
-                color: $white;
-                &:before {
-                    content: "\f0a9"; font-family: 'FontAwesome'; color: $blue;
-                    padding-right:10px;
+            // grid column layout
+            .grid-columns {
+                &.cols-2 {
+                    @include responsive-grid(2);
+                }
+                &.cols-3 {
+                    @include responsive-grid(3);
                 }
             }
         }
-        .field-name-field-event-subtitle {
-            color: $orange; font-size:1.1em;
-        }
-        .field-name-post-date {
-            color: $orange;
-        }
-        .field-name-body {
-            margin-bottom: 10px;
-        }
     }
-    // research
-    .node-research {
-        .field-label {
-            font-size: 1.6em; color: $blue; margin-bottom: .5em;
-        }
+    .front & {
+        padding-top: 1.5em;
     }
-    .view-research-summaries {
-        h2 { 
-            color: $green; margin-bottom: .5em; 
-            a { color: $green; }
-        }
-    }
-    .grid-columns {
-        @include breakpoint(maxsmall) {
-            li {
-                clear: both; 
-                @include clearafter;
-                margin-bottom: 20px;
-            }
-        }
-    }
-    @include breakpoint(minsmall) {
-        // grid column layout
-        .grid-columns {
-            &.cols-2 {
-                @include responsive-grid(2);
-            }
-            &.cols-3 {
-                @include responsive-grid(3);
-            }
-        }
-    }
-    
 }
+
 .region-sidebar-second {
     margin-top:100px; padding: 0;
     h2.block-title {
@@ -811,7 +853,7 @@ body {
     }
     .footer-info-block {
         float: right; color: $white; font-size: .8em;
-        
+        line-height: 1.5em;
         .cols {
             float: left; margin-left: 30px;
         }
@@ -851,15 +893,15 @@ body {
     /* height: calc(100% + 110px); */
     height: 100%;
     position: absolute;
-    top: 0;
+    top: 20px;
     overflow: visible;
-    left: 0;
+    left: -5px;
     
     @media (min-width: 1340px) {
-        left: calc(50% - 670px);
+        left: calc(50% - 675px);
     }
     @include breakpoint(maxsmall) {
-        left: -70px;
+        left: -75px;
     }
 }
 .svg-defs {
