@@ -35,19 +35,22 @@ function tii_preprocess_maintenance_page(&$variables, $hook) {
  *   The name of the template being rendered ("html" in this case.)
  */
 function tii_preprocess_html(&$variables, $hook) {
-    // add class to body depending on whether page is a main or sub section
+    // add class to body depending on whether page is primary, secondary or tertiary
     $menutrail = menu_get_active_trail(); // if a child in the menu system
     $current_path = current_path();
     $current_path_alias = drupal_get_path_alias( $current_path );
     $path_segments = explode("/", $current_path_alias);  // if has a path prefix
     //dsm($menutrail);
-    if (count($menutrail) >= 3 || count($path_segments) >= 2) {
-        $variables['classes_array'][] = 'subsection';
+    if (count($menutrail) >= 4 || count($path_segments) >= 3) {
+        $variables['classes_array'][] = 'tertiary';
+    }
+    elseif (count($menutrail) >= 3 || count($path_segments) >= 2) {
+        $variables['classes_array'][] = 'secondary';
     }
     else {
-        $variables['classes_array'][] = 'mainsection';
+        $variables['classes_array'][] = 'primary';
     }
-    
+    //dsm($menutrail);
     // facebook stuff: if news or event post then add thumbnail image url into header source
     if (isset($variables['page']['content']['system_main']['nodes'])) {
         $yy = reset($variables['page']['content']['system_main']['nodes']);

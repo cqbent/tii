@@ -18,7 +18,7 @@ body {
     background-image: url(../images/grey-background-lines.png); background-repeat:no-repeat;
     background-size: 200%; background-position-x: center;
     overflow: hidden;
-    .node-type-research &, .node-type-events &, .node-type-news-article & {
+    .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
         background-color: #fff;
         background-image: url(../images/white-background-lines.png); 
     }
@@ -76,8 +76,8 @@ body {
                     a { 
                         display: block; color: $white; 
                         &:after {
-                            
                         }
+                        .nolink { cursor: pointer; }
                     }
                     &.expanded {
                         &:after {
@@ -126,8 +126,9 @@ body {
                             margin-left:-20px; padding-right: 15px;
                             line-height: 35px;
                         }
-                        .node-type-research &, .node-type-events &, .node-type-news-article & {
+                        .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
                             color: $gray;
+                            
                         }
                         &:hover, &.active, &.active-trail {
                             color: $blue;
@@ -141,7 +142,7 @@ body {
                         a {
                             &:after {
                                 @include diag-border($orange);
-                                margin-left: 20px;
+                                margin-left: 20px; line-height: 35px;
                             }
 
                         }
@@ -158,9 +159,12 @@ body {
                                 }
                             }
                             &.last a:after { display: none; margin: 0; }
-                            .node-type-research &, .node-type-events &, .node-type-news-article & {
+                            .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
                                 a {
                                     color: $white;
+                                    &:hover, &.active, &.active-trail {
+                                        color: $blue;
+                                    }
                                 }
                             }
                         }
@@ -179,9 +183,9 @@ body {
     h2.block-title { font-size: 21px; font-weight: normal; }
     color: $blue; 
     span {
-        font-size: 1.175em; cursor: pointer;
+        font-size: 17px; cursor: pointer;
         &:before {
-            font-family: 'FontAwesome'; 
+            font-family: 'FontAwesome'; font-size:19px;
             display: inline-block; width: 30px;
         }
         &:after {
@@ -274,7 +278,7 @@ body {
     padding-top:3em; padding-bottom: 60px;
     #content {
         color: $white;
-        .node-type-research &, .node-type-events &, .node-type-news-article & {
+        .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
             color: $black;
         }
         h1.title {
@@ -326,7 +330,7 @@ body {
                     @include diag-border($blue);
                 }
             }
-            .node-type-research &, .node-type-events &, .node-type-news-article & {
+            .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
                 margin-left: 0;
                 &:before { display: none; }
                 
@@ -427,7 +431,7 @@ body {
                 }
             }
         }
-        .node-type-research &, .node-type-events &, .node-type-news-article & {
+        .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
             a {
                 color: $blue; text-decoration: underline;
             }
@@ -688,7 +692,7 @@ body {
                 }
                 .views-field-title {
                     transform: skewX(12deg); -webkit-transform: skewX(12deg);
-                    position: absolute; top: 15px; left: 40px;
+                    position: absolute; top: 15px; left: 20px;
                 }
             }
 

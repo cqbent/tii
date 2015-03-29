@@ -128,25 +128,22 @@ function tii_events_views_default_views() {
   $handler->display->display_options['pager']['type'] = 'full';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'node';
+  $handler->display->display_options['row_options']['view_mode'] = 'token';
+  $handler->display->display_options['row_options']['links'] = FALSE;
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
   $handler->display->display_options['sorts']['created']['field'] = 'created';
   $handler->display->display_options['sorts']['created']['order'] = 'DESC';
-  /* Contextual filter: Content: Created year + month */
-  $handler->display->display_options['arguments']['created_year_month']['id'] = 'created_year_month';
-  $handler->display->display_options['arguments']['created_year_month']['table'] = 'node';
-  $handler->display->display_options['arguments']['created_year_month']['field'] = 'created_year_month';
-  $handler->display->display_options['arguments']['created_year_month']['default_action'] = 'summary';
-  $handler->display->display_options['arguments']['created_year_month']['exception']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['created_year_month']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['created_year_month']['title'] = '%1';
-  $handler->display->display_options['arguments']['created_year_month']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['created_year_month']['summary']['sort_order'] = 'desc';
-  $handler->display->display_options['arguments']['created_year_month']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['created_year_month']['summary_options']['override'] = TRUE;
-  $handler->display->display_options['arguments']['created_year_month']['summary_options']['items_per_page'] = '30';
-  $handler->display->display_options['arguments']['created_year_month']['specify_validation'] = TRUE;
+  /* Contextual filter: Content: Date -  start date (field_event_date) */
+  $handler->display->display_options['arguments']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['arguments']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['arguments']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['arguments']['field_event_date_value']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['field_event_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_event_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_event_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_event_date_value']['summary_options']['items_per_page'] = '25';
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
   $handler->display->display_options['filters']['status']['table'] = 'node';
@@ -175,18 +172,15 @@ function tii_events_views_default_views() {
   /* Display: Block */
   $handler = $view->new_display('block', 'Block', 'block');
   $handler->display->display_options['defaults']['arguments'] = FALSE;
-  /* Contextual filter: Content: Created year + month */
-  $handler->display->display_options['arguments']['created_year_month']['id'] = 'created_year_month';
-  $handler->display->display_options['arguments']['created_year_month']['table'] = 'node';
-  $handler->display->display_options['arguments']['created_year_month']['field'] = 'created_year_month';
-  $handler->display->display_options['arguments']['created_year_month']['default_action'] = 'summary';
-  $handler->display->display_options['arguments']['created_year_month']['exception']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['created_year_month']['title_enable'] = TRUE;
-  $handler->display->display_options['arguments']['created_year_month']['title'] = '%1';
-  $handler->display->display_options['arguments']['created_year_month']['default_argument_type'] = 'fixed';
-  $handler->display->display_options['arguments']['created_year_month']['summary']['format'] = 'default_summary';
-  $handler->display->display_options['arguments']['created_year_month']['summary_options']['items_per_page'] = '30';
-  $handler->display->display_options['arguments']['created_year_month']['specify_validation'] = TRUE;
+  /* Contextual filter: Content: Date -  start date (field_event_date) */
+  $handler->display->display_options['arguments']['field_event_date_value']['id'] = 'field_event_date_value';
+  $handler->display->display_options['arguments']['field_event_date_value']['table'] = 'field_data_field_event_date';
+  $handler->display->display_options['arguments']['field_event_date_value']['field'] = 'field_event_date_value';
+  $handler->display->display_options['arguments']['field_event_date_value']['default_action'] = 'summary';
+  $handler->display->display_options['arguments']['field_event_date_value']['default_argument_type'] = 'date';
+  $handler->display->display_options['arguments']['field_event_date_value']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_event_date_value']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_event_date_value']['summary_options']['items_per_page'] = '25';
   $export['past_events'] = $view;
 
   return $export;

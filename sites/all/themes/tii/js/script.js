@@ -21,6 +21,9 @@ Drupal.behaviors.my_custom_behavior = {
     $(document).ready(function() {
         var w_height = $(window).height();
         var w_width = $(window).width();
+        
+        // HOME PAGE SLIDER
+        // if regular size use zAccordian
         if ($('body').hasClass('front') && w_width > 779) {
             createSliderNav();
             $(".slider-list").zAccordion({
@@ -47,6 +50,7 @@ Drupal.behaviors.my_custom_behavior = {
                 height: 325
             });
         }
+        // if mobile size use SLIDEJS
         if ($('body').hasClass('front') && w_width < 780) {
             $('.slider-list').slidesjs({
                 width: 700,
@@ -146,6 +150,12 @@ Drupal.behaviors.my_custom_behavior = {
         else if (h_title > 55) {
             $('h1.page__title').addClass('two');
         }
+        
+        // NOLINK TOP MENU ITEMS - REMOVE LINK
+        $('.menu li a.nolink').each(function() {
+            //$(this).attr('href','javascript:void(0);');
+            $(this).removeAttr('href');
+        })
         
         /*
          * for each slanted image:
