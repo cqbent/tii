@@ -640,11 +640,11 @@ body {
                     z-index: 2;
                     a { color: $white; }
                     .title {
-                        font-size: 1.25em;
+                        font-size: 1.25em; margin-left:5px;
                     }
                     .subtitle {
                         text-transform: uppercase;
-                        font-family: 'DINWeb';
+                        font-family: 'DINWeb-Italic';
                         /*
                         &:before {
                             content: "\f0a9"; font-family: 'FontAwesome'; 
@@ -682,7 +682,7 @@ body {
             }
             @include breakpoint(minsmall) {
                 transform: skewX(-12deg); -webkit-transform: skewX(-12deg);
-                float: right; margin: 20px 120px 0 0; width: calc(100% - 40px);
+                float: right; margin: 20px 120px 0 0; width: calc(100% - 60px);
                 .views-row {
                     height:75px; overflow-y: hidden; 
                 }

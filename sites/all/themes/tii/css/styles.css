@@ -2762,11 +2762,12 @@ body {
 /* line 642, ../sass/_tii.scss */
 #main #content .homepage-news-block .views-row .views-field-title .title {
   font-size: 1.25em;
+  margin-left: 5px;
 }
 /* line 645, ../sass/_tii.scss */
 #main #content .homepage-news-block .views-row .views-field-title .subtitle {
   text-transform: uppercase;
-  font-family: 'DINWeb';
+  font-family: 'DINWeb-Italic';
   /*
   &:before {
       content: "\f0a9"; font-family: 'FontAwesome'; 
@@ -2810,7 +2811,7 @@ body {
     -webkit-transform: skewX(-12deg);
     float: right;
     margin: 20px 120px 0 0;
-    width: calc(100% - 40px);
+    width: calc(100% - 60px);
   }
   /* line 686, ../sass/_tii.scss */
   #main #content .homepage-news-block .views-row {
