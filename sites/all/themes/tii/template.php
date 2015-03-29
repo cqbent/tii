@@ -51,6 +51,7 @@ function tii_preprocess_html(&$variables, $hook) {
     // facebook stuff: if news or event post then add thumbnail image url into header source
     if (isset($variables['page']['content']['system_main']['nodes'])) {
         $yy = reset($variables['page']['content']['system_main']['nodes']);
+        $img = '';
         if (isset($yy['field_image'])) {
             //$img = file_create_url($yy['field_image']['#items'][0]['uri']);
             $img = $yy['field_image']['#items'][0]['uri'];
