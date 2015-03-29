@@ -335,9 +335,13 @@ function tii_events_field_default_field_instances() {
     'description' => 'This is for the event\'s thumbnail',
     'display' => array(
       'default' => array(
-        'label' => 'above',
-        'settings' => array(),
-        'type' => 'hidden',
+        'label' => 'hidden',
+        'module' => 'image',
+        'settings' => array(
+          'image_link' => '',
+          'image_style' => 'thumbnail',
+        ),
+        'type' => 'image',
         'weight' => 7,
       ),
       'teaser' => array(

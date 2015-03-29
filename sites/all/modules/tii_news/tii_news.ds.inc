@@ -78,6 +78,7 @@ function tii_news_ds_layout_settings_info() {
         1 => 'field_news_subtitle',
         2 => 'body',
         3 => 'field_news_author_footer',
+        4 => 'field_image',
       ),
     ),
     'fields' => array(
@@ -85,6 +86,7 @@ function tii_news_ds_layout_settings_info() {
       'field_news_subtitle' => 'ds_content',
       'body' => 'ds_content',
       'field_news_author_footer' => 'ds_content',
+      'field_image' => 'ds_content',
     ),
     'classes' => array(),
     'wrappers' => array(

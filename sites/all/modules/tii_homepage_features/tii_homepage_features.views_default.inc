@@ -45,17 +45,6 @@ function tii_homepage_features_views_default_views() {
     'image_style' => '',
     'image_link' => '',
   );
-  /* Field: Field: Image */
-  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
-  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
-  $handler->display->display_options['fields']['field_image']['label'] = '';
-  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
   /* Field: Content: Link */
   $handler->display->display_options['fields']['field_link']['id'] = 'field_link';
   $handler->display->display_options['fields']['field_link']['table'] = 'field_data_field_link';
@@ -65,6 +54,19 @@ function tii_homepage_features_views_default_views() {
   $handler->display->display_options['fields']['field_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_link']['type'] = 'link_plain';
+  /* Field: Field: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['alter']['text'] = '<a href="[field_link]">[field_image]</a>';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   /* Field: Content: Subtitle */
   $handler->display->display_options['fields']['field_subtitle']['id'] = 'field_subtitle';
   $handler->display->display_options['fields']['field_subtitle']['table'] = 'field_data_field_subtitle';
@@ -78,7 +80,7 @@ function tii_homepage_features_views_default_views() {
   $handler->display->display_options['fields']['title']['field'] = 'title';
   $handler->display->display_options['fields']['title']['label'] = '';
   $handler->display->display_options['fields']['title']['alter']['alter_text'] = TRUE;
-  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="title">[title]</a></div>
+  $handler->display->display_options['fields']['title']['alter']['text'] = '<div class="title"><a href="[field_link]">[title]</a></div>
 <div class="subtitle"><a href="[field_link]">[field_subtitle]</a></div>';
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
@@ -137,17 +139,6 @@ function tii_homepage_features_views_default_views() {
   $handler->display->display_options['pager']['options']['items_per_page'] = '3';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Field: Content: Slice Image */
-  $handler->display->display_options['fields']['field_slice_image']['id'] = 'field_slice_image';
-  $handler->display->display_options['fields']['field_slice_image']['table'] = 'field_data_field_slice_image';
-  $handler->display->display_options['fields']['field_slice_image']['field'] = 'field_slice_image';
-  $handler->display->display_options['fields']['field_slice_image']['label'] = '';
-  $handler->display->display_options['fields']['field_slice_image']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_slice_image']['click_sort_column'] = 'fid';
-  $handler->display->display_options['fields']['field_slice_image']['settings'] = array(
-    'image_style' => '',
-    'image_link' => '',
-  );
   /* Field: Content: Link */
   $handler->display->display_options['fields']['field_link']['id'] = 'field_link';
   $handler->display->display_options['fields']['field_link']['table'] = 'field_data_field_link';
@@ -157,6 +148,19 @@ function tii_homepage_features_views_default_views() {
   $handler->display->display_options['fields']['field_link']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['field_link']['click_sort_column'] = 'url';
   $handler->display->display_options['fields']['field_link']['type'] = 'link_plain';
+  /* Field: Content: Slice Image */
+  $handler->display->display_options['fields']['field_slice_image']['id'] = 'field_slice_image';
+  $handler->display->display_options['fields']['field_slice_image']['table'] = 'field_data_field_slice_image';
+  $handler->display->display_options['fields']['field_slice_image']['field'] = 'field_slice_image';
+  $handler->display->display_options['fields']['field_slice_image']['label'] = '';
+  $handler->display->display_options['fields']['field_slice_image']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_slice_image']['alter']['text'] = '<a href="[field_link]">[field_slice_image]</a>';
+  $handler->display->display_options['fields']['field_slice_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_slice_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_slice_image']['settings'] = array(
+    'image_style' => '',
+    'image_link' => '',
+  );
   /* Field: Content: Subtitle */
   $handler->display->display_options['fields']['field_subtitle']['id'] = 'field_subtitle';
   $handler->display->display_options['fields']['field_subtitle']['table'] = 'field_data_field_subtitle';
