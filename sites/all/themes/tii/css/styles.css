@@ -2455,7 +2455,7 @@ body {
   margin-left: 0px;
 }
 /* line 437, ../sass/_tii.scss */
-.node-type-research #main #content .field-name-field-image, .node-type-events #main #content .field-name-field-image, .node-type-news-article #main #content .field-name-field-image {
+.node-type-research #main #content .field-type-image, .node-type-events #main #content .field-type-image, .node-type-news-article #main #content .field-type-image {
   display: none;
 }
 /* line 443, ../sass/_tii.scss */

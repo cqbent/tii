@@ -52,26 +52,28 @@ function tii_preprocess_html(&$variables, $hook) {
     if (isset($variables['page']['content']['system_main']['nodes'])) {
         $yy = reset($variables['page']['content']['system_main']['nodes']);
         if (isset($yy['field_image'])) {
-            $img = file_create_url($yy['field_image']['#items'][0]['uri']);
-            $imgthumb = image_style_url('thumbnail',$img);
+            //$img = file_create_url($yy['field_image']['#items'][0]['uri']);
+            $img = $yy['field_image']['#items'][0]['uri'];
+        }
+        if (isset($yy['field_event_thumbnail_image'])) {
+            //$img = file_create_url($yy['field_event_thumbnail_image']['#items'][0]['uri']);
+            $img = $yy['field_event_thumbnail_image']['#items'][0]['uri'];
+        }
+        if ($img) {
+            $imgthumb = image_style_url('medium',$img);
             $element = array(
                 '#tag' => 'meta',
                 '#attributes' => array(
                     "property" => "og:image",
-                    "content" => t($img),
+                    "content" => t($imgthumb),
                 ),
             );
             drupal_add_html_head($element,'og_image');
             //dsm($imgthumb);
         }
     }
-    /*
-    $yy = reset($xx);
-    if (isset($yy['field_image'])) {
-        $img = file_create_url($yy['field_image']['#items'][0]['uri']);
-        dsm($img);
-    }
-    */
+    //dsm($variables);
+    
 
   // The body tag's classes are controlled by the $classes_array variable. To
   // remove a class from $classes_array, use array_diff().
