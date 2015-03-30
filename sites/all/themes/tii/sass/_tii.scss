@@ -303,12 +303,12 @@ body {
             @include breakpoint(maxsmall) {
                 line-height: 1.25em;
                 padding:10px 20px 5px 20px;
-                margin-left:-17px;
+                margin-left:-19px;
                 &.two {
-                    margin-left: -23px;
+                    margin-left: -25px;
                 }
                 &.three {
-                    margin-left: -27px;
+                    margin-left: -29px;
                 }
             }
 
