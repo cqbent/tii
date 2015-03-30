@@ -77,7 +77,7 @@ body {
                         display: block; color: $white; 
                         &:after {
                         }
-                        .nolink { cursor: pointer; }
+                        
                     }
                     &.expanded {
                         &:after {
@@ -120,12 +120,12 @@ body {
                     a { 
                         display: block; padding:5px 20px; position: relative;
                         color: $white;
-
                         &:before {
                             @include diag-border($orange);
                             margin-left:-20px; padding-right: 15px;
                             line-height: 35px;
                         }
+                        &.nolink { cursor: pointer; }
                         .node-type-research &, .node-type-events &, .node-type-news-article &, .page-node.tertiary & {
                             color: $gray;
                             
@@ -301,6 +301,7 @@ body {
                 margin-left: -64px;
             }
             @include breakpoint(maxsmall) {
+                line-height: 1.25em;
                 margin-left:-22px;
                 &.two {
                     margin-left: -28px;

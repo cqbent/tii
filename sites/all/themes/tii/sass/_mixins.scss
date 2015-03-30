@@ -42,6 +42,7 @@
     transform: skew(-12deg);
     display: inline-block; height:100%;
     padding-right:5px;
+    color: $color;
 }
 
 @mixin breakpoint($point) {
